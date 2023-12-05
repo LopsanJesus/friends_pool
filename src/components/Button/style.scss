@@ -1,0 +1,21 @@
+.Button {
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  &.primary {
+    background-color: #3a86ff;
+  }
+
+  &.secondary {
+    background-color: #ffbe0b;
+  }
+}

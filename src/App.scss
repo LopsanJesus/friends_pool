@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Riffic";
+  src: url("./fonts/RifficFree-Bold.ttf");
+}
+
+.App {
+  height: 100vh;
+  font-family: "Riffic", "Arial", sans-serif;
+  letter-spacing: 0.07em;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
