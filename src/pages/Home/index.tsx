@@ -31,6 +31,14 @@ const Home = () => {
             variant="primary"
           />
         </div>
+
+        <Separator />
+
+        <div className="section2">
+          <Image size="small" src={BookImage} alt="Rules book icon" />
+          <div>Insertar aqui nueva seccion</div>
+          <Button linkTo="/rules" text="CTA new section" variant="secondary" />
+        </div>
       </div>
     </div>
   );
