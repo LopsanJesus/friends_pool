@@ -37,7 +37,7 @@ const TopBar = ({ size }: IProps) => {
         <nav>
           <a href="/">INICIO</a>
           <a href="/rules">#Euro2024</a>
-          <a href="/">Papas</a>
+          <a href="/papas">Papas</a>
           <a href="/">Clasificación</a>
         </nav>
       )}
