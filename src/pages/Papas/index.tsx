@@ -6,12 +6,12 @@ import "./style.scss";
 interface Player {
     id: number;
     fields: {
-        X_PLAY: number;
-        P_NAME: string;
-        SEXUAL_ORIENTATION: string;
-        RELIGION: string;
-        FAV_MANAGER: string;
-        FAV_FOOTBALL_PLAYER: string;
+        Player_ID: number;
+        Name: string;
+        SexualOrientation: string;
+        Religion: string;
+        FavManager: string;
+        FavFootballer: string;
     }
 }
 
@@ -49,12 +49,12 @@ const Players = () => {
             <tbody>
             {players.map((player) => (
             <tr key={player.id}>
-                <td>{player.fields.X_PLAY}</td>
-                <td>{player.fields.P_NAME}</td>
-                <td>{player.fields.RELIGION}</td>
-                <td>{player.fields.SEXUAL_ORIENTATION}</td>
-                <td>{player.fields.FAV_MANAGER}</td>
-                <td>{player.fields.FAV_FOOTBALL_PLAYER}</td>
+                <td>{player.fields.Player_ID}</td>
+                <td>{player.fields.Name}</td>
+                <td>{player.fields.Religion}</td>
+                <td>{player.fields.SexualOrientation}</td>
+                <td>{player.fields.FavManager}</td>
+                <td>{player.fields.FavFootballer}</td>
             </tr>
             ))}
             </tbody>

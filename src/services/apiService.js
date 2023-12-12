@@ -16,7 +16,7 @@ export const fetchPlayers = async () => {
       },
 
       params: {
-        sort: [{ field: 'X_PLAY' }], // Sort by id in ascending order
+        sort: [{ field: 'Player_ID' }], // Sort by id in ascending order
       },
     });
 
