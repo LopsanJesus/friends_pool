@@ -1,11 +1,13 @@
+@import "../../styles/constants.scss";
+
 .Image.large img {
-  max-width: 300px;
+  max-width: $large-image-size;
 }
 
 .Image.medium img {
-  max-width: 120px;
+  max-width: $medium-image-size;
 }
 
 .Image.small img {
-  max-width: 35px;
+  max-width: $small-image-size;
 }
