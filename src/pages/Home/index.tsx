@@ -1,5 +1,6 @@
 import TopBar from "../../components/TopBar";
 
+import WriteImage from "../../assets/write.png";
 import BookImage from "../../assets/book.png";
 
 import Image from "../../components/Image";
@@ -22,22 +23,22 @@ const Home = () => {
 
         <Separator />
 
-        <div className="rules">
+        <div className="banner-section">
+          <Image size="small" src={WriteImage} alt="Writing icon" />
+          <div>Realiza tus predicciones</div>
+          <Button linkTo="/rules" text="Vamo a juga" variant="primary" />
+        </div>
+
+        <Separator />
+
+        <div className="banner-section">
           <Image size="small" src={BookImage} alt="Rules book icon" />
           <div>¿Aún no tienes claras las reglas?</div>
           <Button
             linkTo="/rules"
             text="Consultar las reglas"
-            variant="primary"
+            variant="secondary"
           />
-        </div>
-
-        <Separator />
-
-        <div className="section2">
-          <Image size="small" src={BookImage} alt="Rules book icon" />
-          <div>Insertar aqui nueva seccion</div>
-          <Button linkTo="/rules" text="CTA new section" variant="secondary" />
         </div>
       </div>
     </div>
