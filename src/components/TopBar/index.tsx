@@ -36,9 +36,9 @@ const TopBar = ({ size }: IProps) => {
       {showMenu && (
         <nav>
           <a href="/">INICIO</a>
-          <a href="/rules">#Euro2024</a>
+          <a href="/matches">#Euro2024</a>
           <a href="/players">Participantes</a>
-          <a href="/">Clasificación</a>
+          <a href="/ranking">Clasificación</a>
         </nav>
       )}
     </div>
