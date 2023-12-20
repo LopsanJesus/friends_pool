@@ -26,7 +26,7 @@ const Home = () => {
         <div className="banner-section">
           <Image size="small" src={WriteImage} alt="Writing icon" />
           <div>Realiza tus predicciones</div>
-          <Button linkTo="/rules" text="Vamo a juga" variant="primary" />
+          <Button linkTo="/predictions" text="Vamo a juga" variant="primary" />
         </div>
 
         <Separator />
