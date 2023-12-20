@@ -1,4 +1,5 @@
 import Button from "../../components/Button";
+
 import "./style.scss";
 
 const Rules = () => {
