@@ -11,7 +11,7 @@ import "./style.scss";
 const Home = () => {
   return (
     <div className="Home">
-      <TopBar size="large" />
+      <TopBar />
 
       <div className="container">
         <Image

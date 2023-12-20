@@ -2,11 +2,7 @@ import { useState } from "react";
 
 import "./style.scss";
 
-interface IProps {
-  size: "large" | "small";
-}
-
-const TopBar = ({ size }: IProps) => {
+const TopBar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -15,23 +11,12 @@ const TopBar = ({ size }: IProps) => {
 
   return (
     <div className="TopBar">
-      {size === "large" && (
-        <header>
-          <div className="menu-icon" onClick={() => toggleMenu()}>
-            &#9776;
-          </div>
-          <img src="logo.png" alt="Logo" />
-        </header>
-      )}
-
-      {size === "small" && (
-        <header>
-          <div className="menu-icon" onClick={() => toggleMenu()}>
-            &#9776;
-          </div>
-          <img src="logo.png" alt="Logo" />
-        </header>
-      )}
+      <header>
+        <div className="menu-icon" onClick={() => toggleMenu()}>
+          &#9776;
+        </div>
+        <img src="logo.png" alt="Logo" />
+      </header>
 
       {showMenu && (
         <nav>
