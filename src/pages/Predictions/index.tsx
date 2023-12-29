@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useGetView from "../../api/useGetView";
 import { BetType } from "../../types/types";
 
@@ -9,11 +8,6 @@ const Predictions = () => {
     databaseName: "Bets",
     view: "Grid view",
   });
-
-  useEffect(() => {
-    console.log("Predictions");
-  }, []);
-
   if (error) {
     return (
       <div className="Predictions">
