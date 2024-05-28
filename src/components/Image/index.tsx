@@ -1,7 +1,7 @@
 import "./style.scss";
 
 interface IProps {
-  size?: "large" | "medium" | "small";
+  size?: "large" | "medium" | "small" | "flag";
   src: string;
   alt: string;
 }
