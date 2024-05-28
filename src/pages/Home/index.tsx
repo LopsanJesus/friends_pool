@@ -1,47 +1,52 @@
-import TopBar from "../../components/TopBar";
+import Image from "components/Image";
+import LinkButton from "components/LinkButton";
+import Separator from "components/Separator";
+import { useUser } from "contexts/UserContext";
 
-import WriteImage from "../../assets/write.png";
-import BookImage from "../../assets/book.png";
+import BookImage from "assets/book.png";
+import WriteImage from "assets/write.png";
 
-import Image from "../../components/Image";
-import Separator from "../../components/Separator";
-import Button from "../../components/Button";
+import PageWithTopbar from "components/PageWithTopbar";
 
 import "./style.scss";
 
 const Home = () => {
+  const { userName } = useUser();
+
   return (
-    <div className="Home">
-      <TopBar />
+    <PageWithTopbar className="Home">
+      {userName && <div className="user-section">Hola, {userName}</div>}
 
-      <div className="container">
-        <Image
-          size="large"
-          src="https://www.fifplay.com/img/public/euro-2024-logo.png"
-          alt="Euro 2024"
-        />
+      <Image
+        size="large"
+        src="https://www.fifplay.com/img/public/euro-2024-logo.png"
+        alt="Euro 2024"
+      />
 
-        <Separator />
+      <Separator />
 
-        <div className="banner-section">
-          <Image size="small" src={WriteImage} alt="Writing icon" />
-          <div>Realiza tus predicciones</div>
-          <Button linkTo="/predictions" text="Vamo a juga" variant="primary" />
-        </div>
+      <div className="banner-section">
+        <Image size="small" src={WriteImage} alt="Writing icon" />
 
-        <Separator />
+        <div>Realiza tus predicciones</div>
 
-        <div className="banner-section">
-          <Image size="small" src={BookImage} alt="Rules book icon" />
-          <div>¿Aún no tienes claras las reglas?</div>
-          <Button
-            linkTo="/rules"
-            text="Consultar las reglas"
-            variant="secondary"
-          />
-        </div>
+        <LinkButton linkTo="/predictions" text="Empezar" variant="primary" />
       </div>
-    </div>
+
+      <Separator />
+
+      <div className="banner-section">
+        <Image size="small" src={BookImage} alt="Rules book icon" />
+
+        <div>¿Aún no tienes claras las reglas?</div>
+
+        <LinkButton
+          linkTo="/rules"
+          text="Consultar las reglas"
+          variant="secondary"
+        />
+      </div>
+    </PageWithTopbar>
   );
 };
 
