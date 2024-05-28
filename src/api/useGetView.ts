@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 
-import { DataArrayType } from "../types/types";
+import { DataArrayType } from "types/types";
 
-import useAirtable from "./useAirtable";
 import { castRecords } from "./casters";
+import useAirtable from "./useAirtable";
 
 interface IProps {
   databaseName: string;
-  view: string;
+  view?: string;
+  filterByFormula?: string;
+  fields?: string[];
 }
 
-const useGetView = ({ databaseName, view }: IProps) => {
+const useGetView = ({
+  databaseName,
+  view = "Grid view",
+  filterByFormula,
+  fields,
+}: IProps) => {
   const { database } = useAirtable();
 
   const [data, setData] = useState<DataArrayType | undefined>([]);
@@ -25,6 +32,8 @@ const useGetView = ({ databaseName, view }: IProps) => {
         maxRecords: 100,
         view,
         pageSize: 100,
+        filterByFormula: filterByFormula ?? "",
+        fields: fields ?? [],
       })
       .firstPage(function (err, records) {
         if (err) {
