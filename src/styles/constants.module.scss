@@ -1,0 +1,24 @@
+// Palette colors
+$primary-color: #3a86ff;
+$secondary-color: #ffbe0b;
+$orange-color: #fb5607;
+$pink-color: #ff006e;
+$purple-color: #8338ec;
+
+// Background colors
+$secondary-background-color: rgba($secondary-color, 0.4);
+
+// Text colors
+$primary-text-color: #333;
+$secondary-text-color: #fff;
+$tertiary-text-color: $secondary-color;
+
+// Image sizes
+$small-image-size: 35px;
+$medium-image-size: 120px;
+$large-image-size: 300px;
+
+:export {
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+}
