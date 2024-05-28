@@ -1,3 +1,21 @@
 .Rules {
-  color: green;
+  h1 {
+    text-align: center;
+  }
+
+  .point-rules {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    li {
+      line-height: 1.6;
+    }
+  }
+
+  .deadline {
+    text-align: center;
+    margin-top: 20px;
+  }
 }
