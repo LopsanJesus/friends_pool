@@ -1,0 +1,8 @@
+@import "styles/constants.module.scss";
+
+.FlagImage {
+  img {
+    border: 2px solid $secondary-background-color;
+    border-radius: 20px;
+  }
+}
