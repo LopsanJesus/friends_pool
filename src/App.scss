@@ -1,3 +1,5 @@
+@import "styles/constants.module.scss";
+
 @font-face {
   font-family: "Riffic";
   src: url("./fonts/RifficFree-Bold.ttf");
@@ -7,5 +9,5 @@
   height: 100vh;
   font-family: "Riffic", "Arial", sans-serif;
   letter-spacing: 0.07em;
-  color: #333;
+  color: $primary-text-color;
 }
