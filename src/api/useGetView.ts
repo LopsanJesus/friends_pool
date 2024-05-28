@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { DataArrayType } from "types/types";
+import { processRecords } from "api/objectProcessor";
+import useAirtable from "api/useAirtable";
 
-import { castRecords } from "./casters";
-import useAirtable from "./useAirtable";
+import { DataArrayType } from "types/types";
 
 interface IProps {
   databaseName: string;
@@ -43,7 +43,7 @@ const useGetView = ({
         }
 
         setLoading(false);
-        setData(castRecords(databaseName, records));
+        setData(processRecords(databaseName, records));
       });
     // eslint-disable-next-line
   }, []);

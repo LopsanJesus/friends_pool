@@ -1,6 +1,6 @@
 import { BetType, DataArrayType, MatchType, UserType } from "types/types";
 
-export const castRecords = (
+export const processRecords = (
   databaseName: string,
   records: any
 ): DataArrayType | undefined => {
