@@ -4,17 +4,18 @@ export type MatchType = {
   visitorTeam: string;
 };
 
-export type PlayerType = {
+export type UserType = {
   id: string;
-  name?: string;
+  pk: string;
+  name: string;
 };
 
 export type BetType = {
-  id: string;
-  player: string;
-  match: string;
-  betType: string;
-  betValue: string;
+  id?: string;
+  userId: string;
+  matchId: string;
+  localGoals: string;
+  visitorGoals: string;
 };
 
-export type DataArrayType = MatchType[] | BetType[] | PlayerType[] | null;
+export type DataArrayType = MatchType[] | BetType[] | UserType[] | null;
