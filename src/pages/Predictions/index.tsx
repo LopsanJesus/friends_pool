@@ -1,41 +1,143 @@
-import useGetView from "../../api/useGetView";
-import { BetType } from "../../types/types";
+import { useCallback, useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import { MoonLoader } from "react-spinners";
+
+import useGetView from "api/useGetView";
+import useInsert from "api/useInsert";
+
+import FlagImage from "components/FlagImage";
+import LinkButton from "components/LinkButton";
+import PageWithTopbar from "components/PageWithTopbar";
+import PredictionsForm from "components/PredictionsForm";
+
+import { goals } from "types/goals";
+import { BetType, MatchType } from "types/types";
+
+import { useUser } from "contexts/UserContext";
+
+import styles from "styles/constants.module.scss";
 
 import "./style.scss";
 
 const Predictions = () => {
-  const { data, loading, error } = useGetView({
+  const [nextMatchToBet, setNextMatchToBet] = useState<MatchType>();
+  const [dataBets, setDataBets] = useState<BetType[]>([]);
+  const [dataMatches, setDataMatches] = useState<MatchType[]>([]);
+
+  const { userPk, userId, userName } = useUser();
+
+  const {
+    data: betsData,
+    loading: betsLoading,
+    error: betsError,
+  } = useGetView({
     databaseName: "Bets",
-    view: "Grid view",
+    view: "BetMatch",
+    filterByFormula: `User = "${userPk}"`,
   });
-  if (error) {
+
+  const {
+    data: matchesData,
+    loading: matchesLoading,
+    error: matchesError,
+  } = useGetView({
+    databaseName: "Matches",
+  });
+
+  const {
+    insert,
+    loading: insertLoading,
+    error: insertError,
+  } = useInsert({ databaseName: "Bets" });
+
+  const insertPrediction = useCallback(
+    (goals: goals) => {
+      if (userId && nextMatchToBet?.id) {
+        insert([
+          {
+            fields: {
+              User: [userId ?? ""],
+              Match: [nextMatchToBet?.id],
+              LocalGoals: parseInt(goals.localGoals),
+              VisitorGoals: parseInt(goals.visitorGoals),
+            },
+          },
+        ]);
+        setDataBets([
+          ...dataBets,
+          {
+            userId,
+            matchId: nextMatchToBet?.id,
+            localGoals: goals.localGoals,
+            visitorGoals: goals.visitorGoals,
+          },
+        ]);
+      }
+    },
+    [dataBets, insert, nextMatchToBet?.id, userId]
+  );
+
+  useEffect(() => {
+    setDataBets(betsData as BetType[]);
+    setDataMatches(matchesData as MatchType[]);
+  }, [betsData, matchesData]);
+
+  useEffect(() => {
+    setNextMatchToBet(
+      dataMatches.find((match: MatchType) => {
+        const correspondingBet = dataBets.find((bet: BetType) => {
+          return bet.matchId === match.id;
+        });
+
+        return !correspondingBet;
+      })
+    );
+  }, [dataBets, dataMatches]);
+
+  if (betsError || matchesError || insertError) {
+    return <Navigate to="/error" replace={true} />;
+  }
+
+  if (betsLoading || matchesLoading || insertLoading) {
     return (
       <div className="Predictions">
-        <h2>Error fetching Predictions</h2>
+        <MoonLoader color={styles.primaryColor} />
       </div>
     );
   }
 
-  if (loading) {
+  if (dataMatches.length === 0) {
     return (
       <div className="Predictions">
-        <h2>Loading...</h2>
+        <h2>No matches found</h2>
       </div>
     );
   }
-
-  const dataBets = data as BetType[];
 
   return (
-    <div className="Predictions">
-      <h2>Predictions Page</h2>
-      {dataBets &&
-        dataBets.map((bet: BetType) => (
-          <div key={bet.id}>
-            <div>{bet.betType}</div>
+    <PageWithTopbar
+      className="Predictions"
+      title={`Predicciones de ${userName}`}
+    >
+      {nextMatchToBet && (
+        <div>
+          <div className="Predictions__flags">
+            <FlagImage country={nextMatchToBet.localTeam} />
+            <FlagImage country={nextMatchToBet.visitorTeam} />
           </div>
-        ))}
-    </div>
+
+          <PredictionsForm
+            handleSaveGoals={(goals) => {
+              insertPrediction(goals);
+            }}
+          />
+        </div>
+      )}
+
+      {!nextMatchToBet && <h3>Ya has rellenado todos tus partidos</h3>}
+
+      <LinkButton linkTo="/" text="Volver" variant="secondary" />
+    </PageWithTopbar>
   );
 };
 
