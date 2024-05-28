@@ -1,10 +1,10 @@
-@import "../../styles/constants.scss";
+@import "styles/constants.module.scss";
 
 .TopBar {
   header {
     background-color: $secondary-color;
     text-align: center;
-    color: white;
+    color: $secondary-text-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,20 +29,24 @@
     padding: 10px;
     text-align: center;
     border-radius: 5px;
-  }
 
-  nav a {
-    display: block;
-    padding: 10px 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-    margin-right: 10px;
-    transition: color 0.3s ease;
+    a {
+      display: block;
+      padding: 10px 15px;
+      color: $secondary-text-color;
+      text-decoration: none;
+      font-size: 1.2em;
+      margin-right: 10px;
+      transition: color 0.3s ease;
+
+      &.active {
+        color: $tertiary-text-color;
+      }
+    }
   }
 
   .menu-icon {
     font-size: 2.4em;
-    color: white;
+    color: $secondary-text-color;
   }
 }
