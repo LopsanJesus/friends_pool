@@ -12,6 +12,7 @@ const PageWithTopbar = ({ className, children, title }: IProps) => {
   return (
     <div className={`PageWithTopbar ${className}`}>
       <TopBar />
+
       <div className="container">
         {title && <div className="title">{title}</div>}
         {children}

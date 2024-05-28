@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
+import LogoImage from "assets/logo.png";
+import Image from "components/Image";
+
 import "./style.scss";
 
 const TopBar = () => {
@@ -27,7 +30,7 @@ const TopBar = () => {
           &#9776;
         </div>
         <a href="/">
-          <img src="logo.png" alt="Logo" />
+          <Image src={LogoImage} alt="Logo" size="large" />
         </a>
       </header>
 
