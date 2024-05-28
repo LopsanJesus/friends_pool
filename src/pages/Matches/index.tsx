@@ -1,12 +1,14 @@
-import useGetView from "../../api/useGetView";
-import { MatchType } from "../../types/types";
+import useGetView from "api/useGetView";
+
+import { MatchType } from "types/types";
+
+import PageWithTopbar from "components/PageWithTopbar";
 
 import "./style.scss";
 
 const Matches = () => {
   const { data, loading, error } = useGetView({
     databaseName: "Matches",
-    view: "Grid view",
   });
 
   if (error) {
@@ -28,8 +30,7 @@ const Matches = () => {
   const matchesData = data as MatchType[];
 
   return (
-    <div className="Matches">
-      <h2>Matches Page</h2>
+    <PageWithTopbar className="Matches" title="Matches">
       {matchesData &&
         matchesData.map((match: MatchType) => (
           <div key={match.id}>
@@ -38,7 +39,7 @@ const Matches = () => {
             </div>
           </div>
         ))}
-    </div>
+    </PageWithTopbar>
   );
 };
 
