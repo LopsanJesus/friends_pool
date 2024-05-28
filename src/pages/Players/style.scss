@@ -1,2 +1,11 @@
+@import "styles/constants.module.scss";
+
 .Players {
+  &__player {
+    width: 70%;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: $secondary-background-color;
+    text-align: center;
+  }
 }

@@ -1,18 +1,21 @@
-import useGetView from "../../api/useGetView";
-import { PlayerType } from "../../types/types";
+import useGetView from "api/useGetView";
+
+import PageWithTopbar from "components/PageWithTopbar";
+import DatabaseError from "pages/ErrorPage";
+
+import { UserType } from "types/types";
 
 import "./style.scss";
 
 const Players = () => {
   const { data, loading, error } = useGetView({
-    databaseName: "Players",
-    view: "Grid view",
+    databaseName: "Users",
   });
 
   if (error) {
     return (
       <div className="Players">
-        <h2>Error fetching players</h2>
+        <DatabaseError />
       </div>
     );
   }
@@ -25,18 +28,17 @@ const Players = () => {
     );
   }
 
-  const dataPlayers = data as PlayerType[];
+  const dataPlayers = data as UserType[];
 
   return (
-    <div className="Players">
-      <h2>Players Page</h2>
+    <PageWithTopbar className="Players" title="Players">
       {dataPlayers &&
-        dataPlayers.map((player: PlayerType) => (
-          <div key={player.id}>
-            <div>{player.name}</div>
+        dataPlayers.map((player: UserType) => (
+          <div key={player.id} className="Players__player">
+            {player.name}
           </div>
         ))}
-    </div>
+    </PageWithTopbar>
   );
 };
 
