@@ -1,16 +1,15 @@
-import "./style.scss";
+import BaseButton, { BaseButtonProps } from "components/BaseButton";
 
-interface IProps {
-  linkTo: string;
+interface IProps extends BaseButtonProps {
+  onClick?: () => void;
   text: string;
-  variant?: "primary" | "secondary";
 }
 
-const Button = ({ linkTo, text, variant = "primary" }: IProps) => {
+const Button = ({ onClick, text, variant = "primary" }: IProps) => {
   return (
-    <div className={`Button ${variant}`}>
-      <a href={linkTo}>{text}</a>
-    </div>
+    <BaseButton variant={variant}>
+      <div onClick={onClick}>{text}</div>
+    </BaseButton>
   );
 };
 
