@@ -10,10 +10,10 @@ import LinkButton from "components/LinkButton";
 import PageWithTopbar from "components/PageWithTopbar";
 import PredictionsForm from "components/PredictionsForm";
 
+import useUser from "hooks/useUser";
+
 import { goals } from "types/goals";
 import { BetType, MatchType } from "types/types";
-
-import { useUser } from "contexts/UserContext";
 
 import styles from "styles/constants.module.scss";
 

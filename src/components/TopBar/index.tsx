@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-import LogoImage from "assets/logo.png";
 import Image from "components/Image";
+
+import LogoImage from "assets/logo.png";
 
 import "./style.scss";
 
@@ -14,8 +15,6 @@ const TopBar = () => {
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
-
-  console.log(location.pathname);
 
   const navLinks = [
     { name: "Partidos", link: "/matches" },

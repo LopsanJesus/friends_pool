@@ -7,7 +7,7 @@ import useGetView from "api/useGetView";
 import LinkButton from "components/LinkButton";
 import PageWithTopbar from "components/PageWithTopbar";
 
-import { useUser } from "contexts/UserContext";
+import useUser from "hooks/useUser";
 import DatabaseError from "pages/ErrorPage";
 
 import { UserType } from "types/types";
