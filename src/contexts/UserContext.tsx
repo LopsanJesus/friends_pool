@@ -1,40 +1,56 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
-interface UserContextType {
-  userId: string | null;
-  setUserId: (id: string) => void;
-  userPk: string | null;
-  setUserPk: (pk: string) => void;
-  userName: string;
-  setUserName: (name: string) => void;
+import useUserStorage from "hooks/useUserStorage";
+
+export interface UserContextType {
+  userId: string | undefined;
+  setUserId: (id?: string) => void;
+  userPk: string | undefined;
+  setUserPk: (pk?: string) => void;
+  userName: string | undefined;
+  setUserName: (name?: string) => void;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+export const UserContext = createContext<UserContextType | undefined>(
+  undefined
+);
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [userId, setUserId] = useState<string | "">(() => {
-    return localStorage.getItem("userId") || "";
-  });
+  const {
+    getUserIdFromStorage,
+    getUserPkFromStorage,
+    getUserNameFromStorage,
+    setUserIdToStorage,
+    setUserPkToStorage,
+    setUserNameToStorage,
+  } = useUserStorage();
 
-  const [userPk, setUserPk] = useState<string | "">(() => {
-    return localStorage.getItem("userPk") || "";
-  });
+  const [userId, setUserId] = useState<string | undefined>(() =>
+    getUserIdFromStorage()
+  );
 
-  const [userName, setUserName] = useState<string | "">(() => {
-    return localStorage.getItem("userName") || "";
-  });
+  const [userPk, setUserPk] = useState<string | undefined>(() =>
+    getUserPkFromStorage()
+  );
+
+  const [userName, setUserName] = useState<string | undefined>(() =>
+    getUserNameFromStorage()
+  );
 
   useEffect(() => {
-    localStorage.setItem("userId", userId);
-    localStorage.setItem("userPk", userPk);
-    localStorage.setItem("userName", userName);
-  }, [userId, userName, userPk]);
+    if (userId && userPk && userName) {
+      setUserIdToStorage(userId);
+      setUserPkToStorage(userPk);
+      setUserNameToStorage(userName);
+    }
+  }, [
+    setUserIdToStorage,
+    setUserNameToStorage,
+    setUserPkToStorage,
+    userId,
+    userName,
+    userPk,
+  ]);
 
   return (
     <UserContext.Provider
@@ -45,12 +61,4 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const useUser = (): UserContextType => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("useUser must be used within a UserProvider");
-  }
-  return context;
-};
-
-export { UserProvider, useUser };
+export default UserProvider;
