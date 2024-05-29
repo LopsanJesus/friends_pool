@@ -1,12 +1,12 @@
 import Image from "components/Image";
 import LinkButton from "components/LinkButton";
+import PageWithTopbar from "components/PageWithTopbar";
 import Separator from "components/Separator";
-import { useUser } from "contexts/UserContext";
 
 import BookImage from "assets/book.png";
 import WriteImage from "assets/write.png";
 
-import PageWithTopbar from "components/PageWithTopbar";
+import useUser from "hooks/useUser";
 
 import "./style.scss";
 
@@ -23,15 +23,23 @@ const Home = () => {
         alt="Euro 2024"
       />
 
-      <Separator />
+      {userName && (
+        <>
+          <Separator />
 
-      <div className="banner-section">
-        <Image size="small" src={WriteImage} alt="Writing icon" />
+          <div className="banner-section">
+            <Image size="small" src={WriteImage} alt="Writing icon" />
 
-        <div>Realiza tus predicciones</div>
+            <div>Realiza tus predicciones</div>
 
-        <LinkButton linkTo="/predictions" text="Empezar" variant="primary" />
-      </div>
+            <LinkButton
+              linkTo="/predictions"
+              text="Empezar"
+              variant="primary"
+            />
+          </div>
+        </>
+      )}
 
       <Separator />
 
@@ -46,6 +54,14 @@ const Home = () => {
           variant="secondary"
         />
       </div>
+
+      {userName && (
+        <>
+          <Separator />
+
+          <LinkButton linkTo="/logout" text="Desconectar" variant="tertiary" />
+        </>
+      )}
     </PageWithTopbar>
   );
 };
