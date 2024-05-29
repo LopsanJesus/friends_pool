@@ -17,6 +17,8 @@ import Rules from "pages/Rules";
 
 import UserProvider from "contexts/UserContext";
 
+import ProtectedRoute from "components/ProtectedRoute";
+
 import "./App.scss";
 
 const App = () => {
@@ -29,10 +31,10 @@ const App = () => {
             <Route path="/ranking" element={<Ranking />} />
             <Route path="/matches" element={<Matches />} />
             <Route path="/players" element={<Players />} />
-            <Route path="/predictions" element={<Predictions />} />
+            <ProtectedRoute path="/predictions" element={<Predictions />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/login/:token" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
+            <ProtectedRoute path="/logout" element={<Logout />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/error" element={<ErrorPage />} />
           </Routes>
