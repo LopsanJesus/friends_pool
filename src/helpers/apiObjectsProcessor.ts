@@ -15,6 +15,8 @@ export const processRecords = (
           visitorTeam: record.get("VisitorTeam") + "",
           group: record.get("Group") + "",
           date: record.get("MatchDate") + "",
+          localTeamGoals: record.get("LocalGoals") + "",
+          visitorTeamGoals: record.get("VisitorGoals") + "",
         });
       });
 
@@ -41,6 +43,7 @@ export const processRecords = (
           matchId: record.get("Match") + "",
           localGoals: record.get("LocalGoals") + "",
           visitorGoals: record.get("VisitorGoals") + "",
+          userName: record.get("UserName") + "",
         });
       });
 
@@ -64,8 +67,8 @@ export const getApiBet = ({
       fields: {
         User: [userId],
         Match: [matchId],
-        LocalGoals: parseInt(localGoals),
-        VisitorGoals: parseInt(visitorGoals),
+        LocalGoals: localGoals,
+        VisitorGoals: visitorGoals,
       },
     },
   ];
