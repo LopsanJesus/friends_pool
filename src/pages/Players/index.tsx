@@ -1,9 +1,12 @@
+import { Navigate } from "react-router";
+
 import useGetView from "api/useGetView";
 
 import PageWithTopbar from "components/PageWithTopbar";
-import DatabaseError from "pages/ErrorPage";
 
 import { UserType } from "types/types";
+
+import Loader from "components/Loader";
 
 import "./style.scss";
 
@@ -13,25 +16,15 @@ const Players = () => {
   });
 
   if (error) {
-    return (
-      <div className="Players">
-        <DatabaseError />
-      </div>
-    );
-  }
-
-  if (loading) {
-    return (
-      <div className="Players">
-        <h2>Loading...</h2>
-      </div>
-    );
+    return <Navigate to="/error" replace />;
   }
 
   const dataPlayers = data as UserType[];
 
   return (
     <PageWithTopbar className="Players" title="Players">
+      {loading && <Loader />}
+
       {dataPlayers &&
         dataPlayers.map((player: UserType) => (
           <div key={player.id} className="Players__player">

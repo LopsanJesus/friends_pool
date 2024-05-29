@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MoonLoader } from "react-spinners";
 
 import useGetView from "api/useGetView";
 
@@ -12,7 +11,7 @@ import DatabaseError from "pages/ErrorPage";
 
 import { UserType } from "types/types";
 
-import styles from "styles/constants.module.scss";
+import Loader from "components/Loader";
 
 const Login = () => {
   const { token } = useParams();
@@ -34,17 +33,14 @@ const Login = () => {
     }
   }, [data, setUserId, setUserName, setUserPk]);
 
-  if (loading) {
-    return <MoonLoader color={styles.primaryColor} />;
-  }
-
   if (error) {
     return <DatabaseError />;
   }
 
   return (
     <PageWithTopbar className="Login" title={`Bienvenido, ${userName}`}>
-      <LinkButton linkTo="/" text="Acceder" />
+      {loading && <Loader />}
+      {!loading && data && <LinkButton linkTo="/" text="Acceder" />}
     </PageWithTopbar>
   );
 };

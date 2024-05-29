@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { MoonLoader } from "react-spinners";
 
 import useGetView from "api/useGetView";
 import useInsert from "api/useInsert";
@@ -18,8 +17,7 @@ import useUser from "hooks/useUser";
 import { goals } from "types/goals";
 import { BetType, MatchType } from "types/types";
 
-import styles from "styles/constants.module.scss";
-
+import Loader from "components/Loader";
 import "./style.scss";
 
 const Predictions = () => {
@@ -88,7 +86,7 @@ const Predictions = () => {
   }, [betsLoading, insertLoading, matchesLoading]);
 
   if (dataError) {
-    return <Navigate to="/error" replace={true} />;
+    return <Navigate to="/error" replace />;
   }
 
   return (
@@ -97,7 +95,7 @@ const Predictions = () => {
       title={`Predicciones de ${userName}`}
     >
       {dataLoading ? (
-        <MoonLoader color={styles.primaryColor} />
+        <Loader />
       ) : (
         nextMatchToBet && (
           <>
