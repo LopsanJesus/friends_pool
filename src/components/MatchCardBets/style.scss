@@ -1,0 +1,15 @@
+@import "styles/constants.module.scss";
+
+.MatchCardBets {
+  .bet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+
+    &.active > .user,
+    &.active > .result {
+      color: $primary-color;
+    }
+  }
+}

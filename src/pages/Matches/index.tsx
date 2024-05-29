@@ -1,44 +1,71 @@
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Navigate } from "react-router-dom";
+
 import useGetView from "api/useGetView";
 
-import { MatchType } from "types/types";
+import { BetType, MatchType } from "types/types";
 
+import Loader from "components/Loader";
+import MatchCard from "components/MatchCard";
 import PageWithTopbar from "components/PageWithTopbar";
 
 import "./style.scss";
 
 const Matches = () => {
-  const { data, loading, error } = useGetView({
+  const [matchesData, setMatchesData] = useState<MatchType[]>([]);
+  const [betsData, setBetsData] = useState<BetType[]>([]);
+
+  const { t } = useTranslation();
+
+  const {
+    data: dataMatches,
+    loading: loadingMatches,
+    error: errorMatches,
+  } = useGetView({
     databaseName: "Matches",
   });
 
-  if (error) {
-    return (
-      <div className="Matches">
-        <h2>Error fetching matches</h2>
-      </div>
-    );
-  }
+  const {
+    data: dataBets,
+    loading: loadingBets,
+    error: errorBets,
+  } = useGetView({
+    databaseName: "Bets",
+    view: "BetsWithUser",
+  });
 
-  if (loading) {
-    return (
-      <div className="Matches">
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (dataMatches && dataBets) {
+      setMatchesData(dataMatches as MatchType[]);
+      setBetsData(dataBets as BetType[]);
+    }
+  }, [dataBets, dataMatches]);
 
-  const matchesData = data as MatchType[];
+  if (errorMatches || errorBets) {
+    return <Navigate to="/error" replace />;
+  }
 
   return (
-    <PageWithTopbar className="Matches" title="Matches">
-      {matchesData &&
-        matchesData.map((match: MatchType) => (
-          <div key={match.id}>
-            <div>
-              {match.localTeam} - {match.visitorTeam}
-            </div>
-          </div>
-        ))}
+    <PageWithTopbar className="Matches" title={t("matches.title")}>
+      {(loadingMatches || loadingBets) && <Loader />}
+      {!loadingMatches &&
+        !loadingBets &&
+        matchesData &&
+        betsData &&
+        matchesData.map((match: MatchType) => {
+          const betsForMatch = betsData.filter((bet: BetType) => {
+            return bet.matchId === match.id;
+          });
+
+          return (
+            <MatchCard
+              key={match.id}
+              match={match}
+              bets={betsForMatch}
+            ></MatchCard>
+          );
+        })}
     </PageWithTopbar>
   );
 };
