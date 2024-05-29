@@ -4,5 +4,8 @@
   img {
     border: 2px solid $secondary-background-color;
     border-radius: 20px;
+
+    width: $flag-image-width;
+    height: $flag-image-height;
   }
 }

@@ -1,5 +1,3 @@
-import Image from "components/Image";
-
 import { getCountryCode } from "helpers/countryCodes";
 
 import "./style.scss";
@@ -13,11 +11,7 @@ const FlagImage = ({ country }: IProps) => {
 
   return (
     <div className="FlagImage">
-      <Image
-        src={`https://flagcdn.com/w160/${countryCode}.png`}
-        size="flag"
-        alt={country}
-      ></Image>
+      <img src={`https://flagcdn.com/w160/${countryCode}.png`} alt={country} />
     </div>
   );
 };
