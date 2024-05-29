@@ -12,7 +12,6 @@ import Logout from "pages/Logout";
 import Matches from "pages/Matches";
 import Players from "pages/Players";
 import Predictions from "pages/Predictions";
-import Ranking from "pages/Ranking";
 import Rules from "pages/Rules";
 
 import UserProvider from "contexts/UserContext";
@@ -28,7 +27,6 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/ranking" element={<Ranking />} />
             <Route path="/matches" element={<Matches />} />
             <Route path="/players" element={<Players />} />
             <Route path="/rules" element={<Rules />} />
@@ -37,8 +35,8 @@ const App = () => {
             <Route element={<ProtectedRoute />}>
               <Route path="/predictions" element={<Predictions />} />
             </Route>
-            <Route path="*" element={<Navigate to="/" />} />
             <Route path="/error" element={<ErrorPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Router>
       </UserProvider>
