@@ -31,10 +31,12 @@ const App = () => {
             <Route path="/ranking" element={<Ranking />} />
             <Route path="/matches" element={<Matches />} />
             <Route path="/players" element={<Players />} />
-            <ProtectedRoute path="/predictions" element={<Predictions />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/login/:token" element={<Login />} />
-            <ProtectedRoute path="/logout" element={<Logout />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/predictions" element={<Predictions />} />
+            </Route>
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/error" element={<ErrorPage />} />
           </Routes>
