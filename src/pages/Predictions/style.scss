@@ -1,4 +1,10 @@
 .Predictions {
+  &__info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__flags {
     display: flex;
     align-items: center;
