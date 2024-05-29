@@ -20,6 +20,7 @@ i18n
       en: {
         translation: {
           hello: "Hello, {{userName}}",
+          welcome: "Welcome, {{userName}}",
           home: {
             predictions: "Make your predictions",
             start: "Start",
@@ -27,17 +28,91 @@ i18n
             rulesButton: "Check the rules",
             disconnect: "Disconnect",
           },
+          matches: {
+            title: "Matches",
+            group: "Group {{group}}",
+          },
+          players: {
+            title: "Players",
+          },
+          predictions: {
+            title: "Predictions of {{userName}}",
+            allMatchesDone: "You have filled all your matches",
+          },
+          logout: {
+            title: "Session closed",
+          },
+          buttons: {
+            save: "Save",
+            back: "Back",
+            access: "Access",
+            home: "Home",
+          },
         },
       },
       es: {
         translation: {
           hello: "Hola, {{userName}}",
+          welcome: "Bienvenido, {{userName}}",
           home: {
             predictions: "Realiza tus predicciones",
             start: "Empezar",
             rules: "¿Aún no tienes claras las reglas?",
             rulesButton: "Consultar las reglas",
             disconnect: "Desconectar",
+          },
+          matches: {
+            title: "Partidos",
+            group: "Grupo {{group}}",
+          },
+          players: {
+            title: "Participantes",
+          },
+          predictions: {
+            title: "Predicciones de {{userName}}",
+            allMatchesDone: "Ya has rellenado todos tus partidos",
+          },
+          logout: {
+            title: "Sesión cerrada",
+          },
+          buttons: {
+            save: "Guardar",
+            back: "Volver",
+            access: "Acceder",
+            home: "Inicio",
+          },
+        },
+      },
+      de: {
+        translation: {
+          hello: "Hallo, {{userName}}",
+          welcome: "Willkommen, {{userName}}",
+          home: {
+            predictions: "Vorhersagen anlegen",
+            start: "Starten",
+            rules: "Fragen Sie nach den Regeln?",
+            rulesButton: "Regeln prüfen",
+            disconnect: "Abmelden",
+          },
+          matches: {
+            title: "Spiele",
+            group: "Gruppe {{group}}",
+          },
+          players: {
+            title: "Spieler",
+          },
+          predictions: {
+            title: "Vorhersagen von {{userName}}",
+            allMatchesDone: "Du hast alle deine Spiele ausgeführt",
+          },
+          logout: {
+            title: "Sitzung beendet",
+          },
+          buttons: {
+            save: "Speichern",
+            back: "Zurück",
+            access: "Zugriff",
+            home: "Start",
           },
         },
       },

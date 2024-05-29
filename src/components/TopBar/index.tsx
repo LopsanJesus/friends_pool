@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink, useLocation } from "react-router-dom";
 
 import Image from "components/Image";
@@ -11,15 +12,15 @@ const TopBar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const location = useLocation();
+  const { t } = useTranslation();
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   const navLinks = [
-    { name: "Partidos", link: "/matches" },
-    { name: "Participantes", link: "/players" },
-    { name: "Clasificación", link: "/ranking" },
+    { name: t("matches.title"), link: "/matches" },
+    { name: t("players.title"), link: "/players" },
   ];
 
   return (

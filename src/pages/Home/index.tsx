@@ -6,8 +6,8 @@ import LinkButton from "components/LinkButton";
 import PageWithTopbar from "components/PageWithTopbar";
 import Separator from "components/Separator";
 
-import BookImage from "assets/book.png";
-import WriteImage from "assets/write.png";
+import BookIcon from "assets/book.png";
+import WriteIcon from "assets/write.png";
 
 import useUser from "hooks/useUser";
 
@@ -34,7 +34,7 @@ const Home = () => {
           <Separator />
 
           <div className="banner-section">
-            <Image size="small" src={WriteImage} alt="Writing icon" />
+            <Image size="small" src={WriteIcon} alt="Writing icon" />
 
             <div>{t("home.predictions")}</div>
 
@@ -50,7 +50,7 @@ const Home = () => {
       <Separator />
 
       <div className="banner-section">
-        <Image size="small" src={BookImage} alt="Rules book icon" />
+        <Image size="small" src={BookIcon} alt="Rules book icon" />
 
         <div>{t("home.rules")}</div>
 

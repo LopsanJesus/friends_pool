@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Navigate } from "react-router-dom";
 
 import useGetView from "api/useGetView";
@@ -24,6 +25,8 @@ const Predictions = () => {
   const [nextMatchToBet, setNextMatchToBet] = useState<MatchType>();
   const [dataBets, setDataBets] = useState<BetType[]>([]);
   const [dataMatches, setDataMatches] = useState<MatchType[]>([]);
+
+  const { t } = useTranslation();
 
   const { userPk, userId, userName } = useUser();
 
@@ -91,7 +94,7 @@ const Predictions = () => {
   return (
     <PageWithTopbar
       className="Predictions"
-      title={`Predicciones de ${userName}`}
+      title={t("predictions.title", { userName })}
     >
       {dataLoading ? (
         <Loader />
@@ -99,7 +102,7 @@ const Predictions = () => {
         nextMatchToBet && (
           <>
             <div className="Predictions__info">
-              <div>Group {nextMatchToBet.group}</div>
+              <div>{t("matches.group", { group: nextMatchToBet.group })}</div>
               <div>{new Date(nextMatchToBet.date).toLocaleDateString()}</div>
             </div>
 
@@ -118,10 +121,10 @@ const Predictions = () => {
       )}
 
       {!dataLoading && !nextMatchToBet && (
-        <h3>Ya has rellenado todos tus partidos</h3>
+        <h3>{t("predictions.allMatchesDone")}</h3>
       )}
 
-      <LinkButton linkTo="/" text="Volver" variant="secondary" />
+      <LinkButton linkTo="/" text={t("buttons.back")} variant="secondary" />
     </PageWithTopbar>
   );
 };

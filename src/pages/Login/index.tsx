@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 import useGetView from "api/useGetView";
@@ -15,6 +16,7 @@ import Loader from "components/Loader";
 
 const Login = () => {
   const { token } = useParams();
+  const { t } = useTranslation();
 
   const { setUserId, userName, setUserPk, setUserName } = useUser();
 
@@ -38,9 +40,9 @@ const Login = () => {
   }
 
   return (
-    <PageWithTopbar className="Login" title={`Bienvenido, ${userName}`}>
+    <PageWithTopbar className="Login" title={t("welcome", { userName })}>
       {loading && <Loader />}
-      {!loading && data && <LinkButton linkTo="/" text="Acceder" />}
+      {!loading && data && <LinkButton linkTo="/" text={t("buttons.access")} />}
     </PageWithTopbar>
   );
 };

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "components/Button";
 import { goals } from "types/goals";
 
+import { useTranslation } from "react-i18next";
 import "./style.scss";
 
 interface IProps {
@@ -17,6 +18,8 @@ const PredictionsForm = ({ handleSaveGoals }: IProps) => {
     localGoals: "0",
     visitorGoals: "0",
   });
+
+  const { t } = useTranslation();
 
   const handleLocalGoalClick = (value: string) => {
     setGoals((prevGoals) => ({
@@ -67,7 +70,7 @@ const PredictionsForm = ({ handleSaveGoals }: IProps) => {
         </div>
       </div>
 
-      <Button text="Guardar" onClick={() => handleSubmit()} />
+      <Button text={t("buttons.save")} onClick={() => handleSubmit()} />
     </div>
   );
 };
