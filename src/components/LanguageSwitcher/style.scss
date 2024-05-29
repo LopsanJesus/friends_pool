@@ -1,0 +1,17 @@
+@import "styles/constants.module.scss";
+
+.LanguageSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  img {
+    cursor: pointer;
+    border-radius: 5px;
+
+    &.active {
+      border: 3px solid $primary-color;
+    }
+  }
+}
