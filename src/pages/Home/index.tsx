@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 import Image from "components/Image";
+import LanguageSwitcher from "components/LanguageSwitcher";
 import LinkButton from "components/LinkButton";
 import PageWithTopbar from "components/PageWithTopbar";
 import Separator from "components/Separator";
@@ -12,10 +15,13 @@ import "./style.scss";
 
 const Home = () => {
   const { userName } = useUser();
+  const { t } = useTranslation();
 
   return (
     <PageWithTopbar className="Home">
-      {userName && <div className="user-section">Hola, {userName}</div>}
+      {userName && (
+        <div className="user-section">{t("hello", { userName })}</div>
+      )}
 
       <Image
         size="large"
@@ -30,11 +36,11 @@ const Home = () => {
           <div className="banner-section">
             <Image size="small" src={WriteImage} alt="Writing icon" />
 
-            <div>Realiza tus predicciones</div>
+            <div>{t("home.predictions")}</div>
 
             <LinkButton
               linkTo="/predictions"
-              text="Empezar"
+              text={t("home.start")}
               variant="primary"
             />
           </div>
@@ -46,21 +52,25 @@ const Home = () => {
       <div className="banner-section">
         <Image size="small" src={BookImage} alt="Rules book icon" />
 
-        <div>¿Aún no tienes claras las reglas?</div>
+        <div>{t("home.rules")}</div>
 
         <LinkButton
           linkTo="/rules"
-          text="Consultar las reglas"
+          text={t("home.rulesButton")}
           variant="secondary"
         />
       </div>
 
-      {userName && (
-        <>
-          <Separator />
+      <Separator />
 
-          <LinkButton linkTo="/logout" text="Desconectar" variant="tertiary" />
-        </>
+      <LanguageSwitcher />
+
+      {userName && (
+        <LinkButton
+          linkTo="/logout"
+          text={t("home.disconnect")}
+          variant="tertiary"
+        />
       )}
     </PageWithTopbar>
   );
