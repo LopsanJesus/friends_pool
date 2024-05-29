@@ -1,7 +1,7 @@
 import "./style.scss";
 
 export interface BaseButtonProps {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
   children?: JSX.Element;
 }
 
