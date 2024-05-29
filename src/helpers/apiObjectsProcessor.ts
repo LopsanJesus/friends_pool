@@ -45,3 +45,26 @@ export const processRecords = (
       return betRecords;
   }
 };
+
+export const getApiBet = ({
+  userId,
+  matchId,
+  localGoals,
+  visitorGoals,
+}: {
+  userId: string;
+  matchId: string;
+  localGoals: string;
+  visitorGoals: string;
+}) => {
+  return [
+    {
+      fields: {
+        User: [userId],
+        Match: [matchId],
+        LocalGoals: parseInt(localGoals),
+        VisitorGoals: parseInt(visitorGoals),
+      },
+    },
+  ];
+};

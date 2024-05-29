@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { processRecords } from "api/objectProcessor";
 import useAirtable from "api/useAirtable";
+import { processRecords } from "helpers/apiObjectsProcessor";
 
 import { DataArrayType } from "types/types";
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 
@@ -9,6 +9,9 @@ import FlagImage from "components/FlagImage";
 import LinkButton from "components/LinkButton";
 import PageWithTopbar from "components/PageWithTopbar";
 import PredictionsForm from "components/PredictionsForm";
+
+import { getApiBet } from "helpers/apiObjectsProcessor";
+import { findNextMatchToBet } from "helpers/bets";
 
 import useUser from "hooks/useUser";
 
@@ -53,25 +56,15 @@ const Predictions = () => {
   const insertPrediction = useCallback(
     (goals: goals) => {
       if (userId && nextMatchToBet?.id) {
-        insert([
-          {
-            fields: {
-              User: [userId ?? ""],
-              Match: [nextMatchToBet?.id],
-              LocalGoals: parseInt(goals.localGoals),
-              VisitorGoals: parseInt(goals.visitorGoals),
-            },
-          },
-        ]);
-        setDataBets([
-          ...dataBets,
-          {
-            userId,
-            matchId: nextMatchToBet?.id,
-            localGoals: goals.localGoals,
-            visitorGoals: goals.visitorGoals,
-          },
-        ]);
+        const bet = {
+          userId,
+          matchId: nextMatchToBet?.id,
+          localGoals: goals.localGoals,
+          visitorGoals: goals.visitorGoals,
+        };
+
+        insert(getApiBet(bet));
+        setDataBets([...dataBets, bet]);
       }
     },
     [dataBets, insert, nextMatchToBet?.id, userId]
@@ -83,35 +76,19 @@ const Predictions = () => {
   }, [betsData, matchesData]);
 
   useEffect(() => {
-    setNextMatchToBet(
-      dataMatches.find((match: MatchType) => {
-        const correspondingBet = dataBets.find((bet: BetType) => {
-          return bet.matchId === match.id;
-        });
-
-        return !correspondingBet;
-      })
-    );
+    setNextMatchToBet(findNextMatchToBet(dataMatches, dataBets));
   }, [dataBets, dataMatches]);
 
-  if (betsError || matchesError || insertError) {
+  const dataError = useMemo(() => {
+    return betsError || matchesError || insertError;
+  }, [betsError, insertError, matchesError]);
+
+  const dataLoading = useMemo(() => {
+    return betsLoading || matchesLoading || insertLoading;
+  }, [betsLoading, insertLoading, matchesLoading]);
+
+  if (dataError) {
     return <Navigate to="/error" replace={true} />;
-  }
-
-  if (betsLoading || matchesLoading || insertLoading) {
-    return (
-      <div className="Predictions">
-        <MoonLoader color={styles.primaryColor} />
-      </div>
-    );
-  }
-
-  if (dataMatches.length === 0) {
-    return (
-      <div className="Predictions">
-        <h2>No matches found</h2>
-      </div>
-    );
   }
 
   return (
@@ -119,22 +96,28 @@ const Predictions = () => {
       className="Predictions"
       title={`Predicciones de ${userName}`}
     >
-      {nextMatchToBet && (
-        <div>
-          <div className="Predictions__flags">
-            <FlagImage country={nextMatchToBet.localTeam} />
-            <FlagImage country={nextMatchToBet.visitorTeam} />
-          </div>
+      {dataLoading ? (
+        <MoonLoader color={styles.primaryColor} />
+      ) : (
+        nextMatchToBet && (
+          <>
+            <div className="Predictions__flags">
+              <FlagImage country={nextMatchToBet.localTeam} />
+              <FlagImage country={nextMatchToBet.visitorTeam} />
+            </div>
 
-          <PredictionsForm
-            handleSaveGoals={(goals) => {
-              insertPrediction(goals);
-            }}
-          />
-        </div>
+            <PredictionsForm
+              handleSaveGoals={(goals) => {
+                insertPrediction(goals);
+              }}
+            />
+          </>
+        )
       )}
 
-      {!nextMatchToBet && <h3>Ya has rellenado todos tus partidos</h3>}
+      {!dataLoading && !nextMatchToBet && (
+        <h3>Ya has rellenado todos tus partidos</h3>
+      )}
 
       <LinkButton linkTo="/" text="Volver" variant="secondary" />
     </PageWithTopbar>
