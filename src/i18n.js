@@ -3,18 +3,13 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
 i18n
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
-  // pass the i18n instance to react-i18next.
   .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     debug: true,
     fallbackLng: "es",
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false,
     },
     resources: {
       en: {
@@ -34,6 +29,13 @@ i18n
           },
           players: {
             title: "Players",
+          },
+          rules: {
+            title: "Euro 2024 Rules",
+            onePoint: "By correctly guessing 1X2 you get 1 point.",
+            threePoints: "By correctly guessing exact score you get 3 points.",
+            deadline:
+              "The deadline for filling predictions is Wednesday, 12 June at 23:59",
           },
           predictions: {
             title: "Predictions of {{userName}}",
@@ -68,6 +70,13 @@ i18n
           players: {
             title: "Participantes",
           },
+          rules: {
+            title: "Reglas del Torneo",
+            onePoint: "Por acertar el resultado 1X2 se suma 1 punto.",
+            threePoints: "Por acertar el resultado exacto se suman 3 puntos.",
+            deadline:
+              "El miércoles 12 de junio a las 23:59 se cierran las predicciones.",
+          },
           predictions: {
             title: "Predicciones de {{userName}}",
             allMatchesDone: "Ya has rellenado todos tus partidos",
@@ -100,6 +109,13 @@ i18n
           },
           players: {
             title: "Spieler",
+          },
+          rules: {
+            title: "Tourenregeln",
+            onePoint: "Bei korrekter Vorhersage 1X2 erzielt man 1 Punkt.",
+            threePoints: "Bei korrekter Vorhersage erzielt man 3 Punkte.",
+            deadline:
+              "Die Deadline für die Vorhersagen ist am 12.06.2022 um 23:59",
           },
           predictions: {
             title: "Vorhersagen von {{userName}}",

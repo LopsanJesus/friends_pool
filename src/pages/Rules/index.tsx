@@ -1,19 +1,23 @@
+import { useTranslation } from "react-i18next";
+
 import PageWithTopbar from "components/PageWithTopbar";
 
 import "./style.scss";
 
 const Rules = () => {
+  const { t } = useTranslation();
+
   return (
-    <PageWithTopbar className="Rules" title="Reglas del Torneo">
+    <PageWithTopbar className="Rules" title={t("rules.title")}>
       <div className="point-rules">
         <ul>
-          <li>Por acertar el resultado 1X2 se suma 1 punto.</li>
-          <li>Por acertar el resultado exacto se suman 3 puntos.</li>
+          <li>{t("rules.onePoint")}</li>
+          <li>{t("rules.threePoints")}</li>
         </ul>
       </div>
 
       <div className="deadline">
-        <p>El miércoles 12 de junio a las 23:59 se cierran las predicciones.</p>
+        <p>{t("rules.deadline")}</p>
       </div>
     </PageWithTopbar>
   );
