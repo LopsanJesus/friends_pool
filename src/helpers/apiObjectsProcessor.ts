@@ -13,6 +13,8 @@ export const processRecords = (
           id: record.id,
           localTeam: record.get("LocalTeam") + "",
           visitorTeam: record.get("VisitorTeam") + "",
+          group: record.get("Group") + "",
+          date: record.get("MatchDate") + "",
         });
       });
 

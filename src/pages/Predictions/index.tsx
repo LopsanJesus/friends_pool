@@ -33,7 +33,6 @@ const Predictions = () => {
     error: betsError,
   } = useGetView({
     databaseName: "Bets",
-    view: "BetMatch",
     filterByFormula: `User = "${userPk}"`,
   });
 
@@ -99,6 +98,11 @@ const Predictions = () => {
       ) : (
         nextMatchToBet && (
           <>
+            <div className="Predictions__info">
+              <div>Group {nextMatchToBet.group}</div>
+              <div>{new Date(nextMatchToBet.date).toLocaleDateString()}</div>
+            </div>
+
             <div className="Predictions__flags">
               <FlagImage country={nextMatchToBet.localTeam} />
               <FlagImage country={nextMatchToBet.visitorTeam} />

@@ -2,6 +2,8 @@ export type MatchType = {
   id: string;
   localTeam: string;
   visitorTeam: string;
+  group: string;
+  date: string;
 };
 
 export type UserType = {
