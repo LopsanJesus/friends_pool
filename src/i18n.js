@@ -16,12 +16,22 @@ i18n
         translation: {
           hello: "Hello, {{userName}}",
           welcome: "Welcome, {{userName}}",
+          topbar: {
+            profile: "Profile",
+            predictions: "Predictions",
+            matches: "Matches",
+            players: "Players",
+            rankings: "Rankings",
+          },
           home: {
             predictions: "Make your predictions",
             start: "Start",
             rules: "Any doubt about the rules?",
             rulesButton: "Check the rules",
             disconnect: "Disconnect",
+          },
+          profile: {
+            title: "Profile - {{userName}}",
           },
           matches: {
             title: "Matches",
@@ -39,7 +49,9 @@ i18n
           },
           predictions: {
             title: "Predictions of {{userName}}",
-            allMatchesDone: "You have filled all your matches",
+            rulesButton: "Check the rules",
+            allMatchesDone: "All matches filled",
+            finalPredictionsDone: "Final predictions done",
           },
           logout: {
             title: "Session closed",
@@ -56,12 +68,22 @@ i18n
         translation: {
           hello: "Hola, {{userName}}",
           welcome: "Bienvenido, {{userName}}",
+          topbar: {
+            profile: "Perfil",
+            predictions: "Predicciones",
+            matches: "Partidos",
+            players: "Participantes",
+            rankings: "Clasificación",
+          },
           home: {
             predictions: "Realiza tus predicciones",
             start: "Empezar",
             rules: "¿Aún no tienes claras las reglas?",
             rulesButton: "Consultar las reglas",
             disconnect: "Desconectar",
+          },
+          profile: {
+            title: "Perfil - {{userName}}",
           },
           matches: {
             title: "Partidos",
@@ -79,7 +101,9 @@ i18n
           },
           predictions: {
             title: "Predicciones de {{userName}}",
-            allMatchesDone: "Ya has rellenado todos tus partidos",
+            rulesButton: "Consultar las reglas",
+            allMatchesDone: "Partidos rellenos",
+            finalPredictionsDone: "Predicciones finales rellenas",
           },
           logout: {
             title: "Sesión cerrada",
@@ -96,12 +120,22 @@ i18n
         translation: {
           hello: "Hallo, {{userName}}",
           welcome: "Willkommen, {{userName}}",
+          topbar: {
+            profile: "Profil",
+            predictions: "Vorhersagen",
+            matches: "Spiele",
+            players: "Spieler",
+            rankings: "Rangliste",
+          },
           home: {
             predictions: "Vorhersagen anlegen",
             start: "Starten",
             rules: "Fragen Sie nach den Regeln?",
             rulesButton: "Regeln prüfen",
             disconnect: "Abmelden",
+          },
+          profile: {
+            title: "Profil - {{userName}}",
           },
           matches: {
             title: "Spiele",
@@ -119,7 +153,9 @@ i18n
           },
           predictions: {
             title: "Vorhersagen von {{userName}}",
-            allMatchesDone: "Du hast alle deine Spiele ausgeführt",
+            rulesButton: "Regeln prüfen",
+            allMatchesDone: "Alle Spiele ausgeführt",
+            finalPredictionsDone: "Finale-Vorhersagen ausgeführt",
           },
           logout: {
             title: "Sitzung beendet",

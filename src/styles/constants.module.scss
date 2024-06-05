@@ -21,6 +21,10 @@ $large-image-size: 300px;
 $flag-image-width: 160px;
 $flag-image-height: 90px;
 
+// CSS filters
+$primary-color-filter: invert(37%) sepia(89%) saturate(1878%) hue-rotate(207deg)
+  brightness(108%) contrast(104%);
+
 :export {
   primaryColor: $primary-color;
   secondaryColor: $secondary-color;

@@ -1,4 +1,11 @@
-import { BetType, DataArrayType, MatchType, UserType } from "types/types";
+import {
+  BetType,
+  DataArrayType,
+  MatchType,
+  MatchType2,
+  UserInfoType,
+  UserType,
+} from "types/types";
 
 export const processRecords = (
   databaseName: string,
@@ -48,6 +55,39 @@ export const processRecords = (
       });
 
       return betRecords;
+
+    case "UserInfos":
+      let userInfoRecords: UserInfoType[] = [];
+
+      records.forEach((record: any) => {
+        userInfoRecords?.push({
+          id: record.id,
+          orientation: record.get("Orientation") + "",
+          religion: record.get("Religion") + "",
+          randomFact: record.get("RandomFact") + "",
+          userId: record.get("User") + "",
+        });
+      });
+
+      return userInfoRecords;
+
+    case "Partidos":
+      let matchRecords2: MatchType2[] = [];
+
+      records.forEach((record: any) => {
+        matchRecords2?.push({
+          id: record.id,
+          localTeam: record.get("LocalTeam") + "",
+          visitorTeam: record.get("VisitorTeam") + "",
+          datetime: record.get("Time") + "",
+          localScore: record.get("LocalScore") + "",
+          visitorScore: record.get("VisitorScore") + "",
+          isLive: record.get("IsLive"),
+          liveMinute: record.get("LiveMinute") + "",
+        });
+      });
+
+      return matchRecords2;
   }
 };
 

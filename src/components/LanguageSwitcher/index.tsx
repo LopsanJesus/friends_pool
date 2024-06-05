@@ -5,6 +5,7 @@ import "./style.scss";
 const lngs: { [key: string]: { countryCode: string } } = {
   en: { countryCode: "gb" },
   es: { countryCode: "es" },
+  de: { countryCode: "de" },
 };
 
 const LanguageSwitcher = () => {

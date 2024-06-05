@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 
 import Image from "components/Image";
-import LanguageSwitcher from "components/LanguageSwitcher";
 import LinkButton from "components/LinkButton";
 import PageWithTopbar from "components/PageWithTopbar";
 import Separator from "components/Separator";
@@ -60,18 +59,6 @@ const Home = () => {
           variant="secondary"
         />
       </div>
-
-      <Separator />
-
-      <LanguageSwitcher />
-
-      {userName && (
-        <LinkButton
-          linkTo="/logout"
-          text={t("home.disconnect")}
-          variant="tertiary"
-        />
-      )}
     </PageWithTopbar>
   );
 };

@@ -8,6 +8,17 @@ export type MatchType = {
   visitorTeamGoals: string;
 };
 
+export type MatchType2 = {
+  id?: string;
+  localTeam: string;
+  visitorTeam: string;
+  datetime: string;
+  localScore: string;
+  visitorScore: string;
+  isLive: boolean;
+  liveMinute: string;
+};
+
 export type UserType = {
   id: string;
   pk: string;
@@ -23,4 +34,18 @@ export type BetType = {
   userName?: string;
 };
 
-export type DataArrayType = MatchType[] | BetType[] | UserType[] | null;
+export type UserInfoType = {
+  id: string;
+  orientation: string;
+  religion: string;
+  randomFact: string;
+  userId: string;
+};
+
+export type DataArrayType =
+  | MatchType[]
+  | MatchType2[]
+  | BetType[]
+  | UserType[]
+  | UserInfoType[]
+  | null;

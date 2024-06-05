@@ -12,7 +12,10 @@ import Logout from "pages/Logout";
 import Matches from "pages/Matches";
 import Players from "pages/Players";
 import Predictions from "pages/Predictions";
+import Profile from "pages/Profile";
+import Ranking from "pages/Ranking";
 import Rules from "pages/Rules";
+import ScrapperTest from "pages/ScrapperTest";
 
 import UserProvider from "contexts/UserContext";
 
@@ -27,9 +30,12 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/matches" element={<Matches />} />
             <Route path="/players" element={<Players />} />
             <Route path="/rules" element={<Rules />} />
+            <Route path="/ranking" element={<Ranking />} />
+            <Route path="/scrapper-test" element={<ScrapperTest />} />
             <Route path="/login/:token" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route element={<ProtectedRoute />}>

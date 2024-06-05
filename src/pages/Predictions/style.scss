@@ -11,4 +11,10 @@
     justify-content: center;
     gap: 30px;
   }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 }

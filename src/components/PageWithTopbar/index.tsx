@@ -4,7 +4,7 @@ import "./style.scss";
 
 interface IProps {
   className: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title?: string;
 }
 

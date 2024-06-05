@@ -10,6 +10,8 @@ interface IProps {
   handleSaveGoals: (goals: goals) => void;
 }
 
+const posibleGoals = ["0", "1", "2", "3", "+"];
+
 const PredictionsForm = ({ handleSaveGoals }: IProps) => {
   const [goals, setGoals] = useState<{
     localGoals: string;
@@ -43,7 +45,7 @@ const PredictionsForm = ({ handleSaveGoals }: IProps) => {
     <div onSubmit={handleSubmit} className="PredictionsForm">
       <div className="PredictionsForm__content">
         <div className="PredictionsForm__goals">
-          {["0", "1", "2", "3", "+"].map((value) => (
+          {posibleGoals.map((value) => (
             <div
               key={value}
               onClick={() => handleLocalGoalClick(value)}
@@ -56,7 +58,7 @@ const PredictionsForm = ({ handleSaveGoals }: IProps) => {
           ))}
         </div>
         <div className="PredictionsForm__goals">
-          {["0", "1", "2", "3", "+"].map((value) => (
+          {posibleGoals.map((value) => (
             <div
               key={value}
               onClick={() => handleVisitorGoalClick(value)}

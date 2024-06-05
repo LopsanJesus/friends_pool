@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink, useLocation } from "react-router-dom";
 
 import Image from "components/Image";
+import useUser from "hooks/useUser";
 
 import LogoImage from "assets/logo.png";
 
@@ -14,13 +15,18 @@ const TopBar = () => {
   const location = useLocation();
   const { t } = useTranslation();
 
+  const { userName } = useUser();
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   const navLinks = [
-    { name: t("matches.title"), link: "/matches" },
-    { name: t("players.title"), link: "/players" },
+    { name: t("topbar.profile"), link: "/profile", protected: true },
+    { name: t("topbar.predictions"), link: "/predictions", protected: true },
+    { name: t("topbar.matches"), link: "/matches", protected: false },
+    { name: t("topbar.players"), link: "/players", protected: false },
+    { name: t("topbar.rankings"), link: "/ranking", protected: false },
   ];
 
   return (
@@ -36,15 +42,18 @@ const TopBar = () => {
 
       {showMenu && (
         <nav>
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.link}
-              to={link.link}
-              className={location.pathname === link.link ? "active" : ""}
-            >
-              {link.name}
-            </NavLink>
-          ))}
+          {navLinks.map(
+            (link) =>
+              (!link.protected || (link.protected && userName)) && (
+                <NavLink
+                  key={link.link}
+                  to={link.link}
+                  className={location.pathname === link.link ? "active" : ""}
+                >
+                  {link.name}
+                </NavLink>
+              )
+          )}
         </nav>
       )}
     </div>
