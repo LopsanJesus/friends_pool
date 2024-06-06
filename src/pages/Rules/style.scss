@@ -3,14 +3,17 @@
     text-align: center;
   }
 
-  .point-rules {
+  .match-predictions-rules,
+  .final-prediction-rules {
     background-color: #f9f9f9;
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
 
     li {
       line-height: 1.6;
+      padding: 5px;
     }
   }
 
