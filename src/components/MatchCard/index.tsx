@@ -10,6 +10,8 @@ import { BetType, MatchType } from "types/types";
 import DownArrowIcon from "assets/down-arrow.png";
 import UpArrowIcon from "assets/up-arrow.png";
 
+import flags from "config/flags";
+
 import "./style.scss";
 
 interface IProps {
@@ -55,14 +57,15 @@ const MatchCard = ({ match, bets }: IProps) => {
           </div>
         )}
 
-        {bets.length > 0 &&
+        {flags.showMatchCardBets &&
+          bets.length > 0 &&
           (!isOpen ? (
             <Image size="small" src={DownArrowIcon} alt="Down arrow icon" />
           ) : (
             <Image size="small" src={UpArrowIcon} alt="Up arrow icon" />
           ))}
 
-        {isOpen && <MatchCardBets bets={bets} />}
+        {flags.showMatchCardBets && isOpen && <MatchCardBets bets={bets} />}
       </div>
     </div>
   );

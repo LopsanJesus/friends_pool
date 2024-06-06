@@ -2,10 +2,22 @@
 
 .MatchCardBets {
   .bet {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 20px;
+    min-width: 100%;
+    margin: auto;
+
+    .result {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: center;
+      justify-content: center;
+      min-width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
     &.active > .user,
     &.active > .result {

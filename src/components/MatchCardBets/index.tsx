@@ -7,6 +7,8 @@ import "./style.scss";
 const MatchCardBets = ({ bets }: { bets: BetType[] }) => {
   const { userName } = useUser();
 
+  console.log(bets);
+
   return (
     <div className="MatchCardBets">
       {bets.map((bet) => (
@@ -16,7 +18,10 @@ const MatchCardBets = ({ bets }: { bets: BetType[] }) => {
         >
           <div className="user">{bet.userName}</div>
           <div className="result">
-            {bet.localGoals} - {bet.visitorGoals}
+            <div>{bet.localGoals}</div>
+            <div>-</div>
+            <div>{bet.visitorGoals}</div>
+            <div className="key-bet">{bet.isKeyBet && "★"}</div>
           </div>
         </div>
       ))}
