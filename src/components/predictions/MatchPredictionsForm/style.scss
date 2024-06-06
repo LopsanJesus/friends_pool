@@ -39,4 +39,25 @@
       }
     }
   }
+
+  &__keyBet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+
+    border: 3px solid $secondary-color;
+    border-radius: 5px;
+    box-shadow: 0 5px 5px $secondary-background-color;
+
+    padding: 5px;
+
+    font-size: 1.4em;
+
+    &.active {
+      color: $secondary-color;
+    }
+  }
 }

@@ -1,24 +1,25 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate } from "react-router-dom";
 
 import useGetView from "api/useGetView";
-import useInsert from "api/useInsert";
 
 import FlagImage from "components/FlagImage";
 import Icon from "components/Icon";
+import LinkButton from "components/LinkButton";
 import Loader from "components/Loader";
-import PredictionsForm from "components/PredictionsForm";
+import PageWithTopbar from "components/PageWithTopbar";
+import MatchPredictionsForm from "components/predictions/MatchPredictionsForm";
 
-import { getApiBet } from "helpers/apiObjectsProcessor";
 import { findNextMatchToBet } from "helpers/bets";
 
 import useUser from "hooks/useUser";
 
-import { goals } from "types/goals";
 import { BetType, MatchType } from "types/types";
 
 import CheckIcon from "assets/check.svg";
+
+import constants from "config/constants";
 
 const MatchPredictions = () => {
   const [nextMatchToBet, setNextMatchToBet] = useState<MatchType>();
@@ -27,7 +28,7 @@ const MatchPredictions = () => {
 
   const { t } = useTranslation();
 
-  const { userPk, userId } = useUser();
+  const { userPk, userName } = useUser();
 
   const {
     data: betsData,
@@ -46,28 +47,9 @@ const MatchPredictions = () => {
     databaseName: "Matches",
   });
 
-  const {
-    insert,
-    loading: insertLoading,
-    error: insertError,
-  } = useInsert({ databaseName: "Bets" });
-
-  const insertPrediction = useCallback(
-    (goals: goals) => {
-      if (userId && nextMatchToBet?.id) {
-        const bet = {
-          userId,
-          matchId: nextMatchToBet?.id,
-          localGoals: goals.localGoals,
-          visitorGoals: goals.visitorGoals,
-        };
-
-        insert(getApiBet(bet));
-        setDataBets([...dataBets, bet]);
-      }
-    },
-    [dataBets, insert, nextMatchToBet?.id, userId]
-  );
+  const addNewBetInserted = (newBet: BetType) => {
+    setDataBets([...dataBets, newBet]);
+  };
 
   useEffect(() => {
     setDataBets(betsData as BetType[]);
@@ -79,24 +61,41 @@ const MatchPredictions = () => {
   }, [dataBets, dataMatches]);
 
   const dataError = useMemo(() => {
-    return betsError || matchesError || insertError;
-  }, [betsError, insertError, matchesError]);
+    return betsError || matchesError;
+  }, [betsError, matchesError]);
 
   const dataLoading = useMemo(() => {
-    return betsLoading || matchesLoading || insertLoading;
-  }, [betsLoading, insertLoading, matchesLoading]);
+    return betsLoading || matchesLoading;
+  }, [betsLoading, matchesLoading]);
+
+  const keyBetsLeft = useMemo(() => {
+    return (
+      constants.maximumGroupPhaseKeyBets -
+      dataBets.filter((bet) => bet.isKeyBet).length
+    );
+  }, [dataBets]);
 
   if (dataError) {
     return <Navigate to="/error" replace />;
   }
 
   return (
-    <>
+    <PageWithTopbar
+      className="MatchPredictionsPage"
+      title={t("predictions.title", { userName })}
+    >
       {dataLoading ? (
         <Loader />
       ) : (
         nextMatchToBet && (
           <>
+            <div>
+              <p>
+                {t("predictions.remainingGroupPhaseKeyBets")}{" "}
+                <span>{keyBetsLeft}</span>
+              </p>
+            </div>
+
             <div className="Predictions__info">
               <div>{t("matches.group", { group: nextMatchToBet.group })}</div>
               <div>{new Date(nextMatchToBet.date).toLocaleDateString()}</div>
@@ -107,10 +106,10 @@ const MatchPredictions = () => {
               <FlagImage country={nextMatchToBet.visitorTeam} />
             </div>
 
-            <PredictionsForm
-              handleSaveGoals={(goals) => {
-                insertPrediction(goals);
-              }}
+            <MatchPredictionsForm
+              match={nextMatchToBet}
+              raiseNewBet={(newBet: BetType) => addNewBetInserted(newBet)}
+              isThereKeyBetsLeft={keyBetsLeft > 0}
             />
           </>
         )
@@ -122,7 +121,13 @@ const MatchPredictions = () => {
           <h3>{t("predictions.allMatchesDone")}</h3>
         </div>
       )}
-    </>
+
+      <LinkButton
+        linkTo="/predictions"
+        text={t("buttons.back")}
+        variant="secondary"
+      />
+    </PageWithTopbar>
   );
 };
 

@@ -32,6 +32,7 @@ export type BetType = {
   localGoals: string;
   visitorGoals: string;
   userName?: string;
+  isKeyBet?: boolean;
 };
 
 export type UserInfoType = {
@@ -42,10 +43,19 @@ export type UserInfoType = {
   userId: string;
 };
 
+export type FinalBetType = {
+  id?: string;
+  betType: string;
+  betValue: string;
+  userId: string;
+  userName?: string;
+};
+
 export type DataArrayType =
   | MatchType[]
   | MatchType2[]
   | BetType[]
   | UserType[]
   | UserInfoType[]
+  | FinalBetType[]
   | null;

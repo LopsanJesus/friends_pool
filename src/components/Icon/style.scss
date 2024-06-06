@@ -1,7 +1,14 @@
 @import "styles/constants.module.scss";
 
-.Icon img {
-  width: 40px;
-  height: 40px;
-  filter: $primary-color-filter;
+.Icon {
+  &.small {
+    width: 20px;
+    height: 20px;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    filter: $primary-color-filter;
+  }
 }

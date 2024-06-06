@@ -1,4 +1,4 @@
-import { BetType, MatchType } from "types/types";
+import { BetType, FinalBetType, MatchType } from "types/types";
 
 export const findNextMatchToBet = (
   dataMatches: MatchType[],
@@ -10,5 +10,14 @@ export const findNextMatchToBet = (
     });
 
     return !correspondingBet;
+  });
+};
+
+export const findNextFinalBet = (
+  dataBets: FinalBetType[],
+  finalBets: string[]
+) => {
+  return finalBets.find((bet) => {
+    return !dataBets.find((item) => item.betType === bet);
   });
 };

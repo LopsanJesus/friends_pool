@@ -2,8 +2,6 @@ import { useTranslation } from "react-i18next";
 
 import LinkButton from "components/LinkButton";
 import PageWithTopbar from "components/PageWithTopbar";
-import FinalPredictions from "components/predictions/FinalPredictions";
-import MatchPredictions from "components/predictions/MatchPredictions";
 
 import useUser from "hooks/useUser";
 
@@ -25,8 +23,17 @@ const Predictions = () => {
         variant="secondary"
       />
 
-      <MatchPredictions />
-      <FinalPredictions />
+      <LinkButton
+        linkTo="/predictions/matches"
+        text={t("predictions.matchesButton")}
+        variant="primary"
+      />
+
+      <LinkButton
+        linkTo="/predictions/final"
+        text={t("predictions.finalButton")}
+        variant="primary"
+      />
 
       <LinkButton linkTo="/" text={t("buttons.back")} variant="secondary" />
     </PageWithTopbar>

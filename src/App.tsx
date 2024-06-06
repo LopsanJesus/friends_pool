@@ -6,9 +6,11 @@ import {
 } from "react-router-dom";
 
 import ErrorPage from "pages/ErrorPage";
+import FinalPredictionsPage from "pages/FinalPredictionsPage";
 import Home from "pages/Home";
 import Login from "pages/Login";
 import Logout from "pages/Logout";
+import MatchPredictionsPage from "pages/MatchPredictionsPage";
 import Matches from "pages/Matches";
 import Players from "pages/Players";
 import Predictions from "pages/Predictions";
@@ -40,6 +42,14 @@ const App = () => {
             <Route path="/logout" element={<Logout />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/predictions" element={<Predictions />} />
+              <Route
+                path="/predictions/final"
+                element={<FinalPredictionsPage />}
+              />
+              <Route
+                path="/predictions/matches"
+                element={<MatchPredictionsPage />}
+              />
             </Route>
             <Route path="/error" element={<ErrorPage />} />
             <Route path="*" element={<Navigate to="/" />} />

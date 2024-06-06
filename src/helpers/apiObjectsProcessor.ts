@@ -1,6 +1,7 @@
 import {
   BetType,
   DataArrayType,
+  FinalBetType,
   MatchType,
   MatchType2,
   UserInfoType,
@@ -51,6 +52,7 @@ export const processRecords = (
           localGoals: record.get("LocalGoals") + "",
           visitorGoals: record.get("VisitorGoals") + "",
           userName: record.get("UserName") + "",
+          isKeyBet: record.get("IsKeyBet"),
         });
       });
 
@@ -70,6 +72,21 @@ export const processRecords = (
       });
 
       return userInfoRecords;
+
+    case "FinalBets":
+      let finalBetsRecords: FinalBetType[] = [];
+
+      records.forEach((record: any) => {
+        finalBetsRecords?.push({
+          id: record.id,
+          betType: record.get("BetType") + "",
+          betValue: record.get("BetValue") + "",
+          userId: record.get("User") + "",
+          userName: record.get("UserName") + "",
+        });
+      });
+
+      return finalBetsRecords;
 
     case "Partidos":
       let matchRecords2: MatchType2[] = [];
@@ -91,17 +108,13 @@ export const processRecords = (
   }
 };
 
-export const getApiBet = ({
+export const parseApiBet = ({
   userId,
   matchId,
   localGoals,
   visitorGoals,
-}: {
-  userId: string;
-  matchId: string;
-  localGoals: string;
-  visitorGoals: string;
-}) => {
+  isKeyBet,
+}: BetType) => {
   return [
     {
       fields: {
@@ -109,6 +122,27 @@ export const getApiBet = ({
         Match: [matchId],
         LocalGoals: localGoals,
         VisitorGoals: visitorGoals,
+        IsKeyBet: isKeyBet,
+      },
+    },
+  ];
+};
+
+export const parseApiFinalBet = ({
+  userId,
+  betType,
+  betValue,
+}: {
+  userId: string;
+  betType: string;
+  betValue: string;
+}) => {
+  return [
+    {
+      fields: {
+        User: [userId],
+        BetType: betType,
+        BetValue: betValue,
       },
     },
   ];
