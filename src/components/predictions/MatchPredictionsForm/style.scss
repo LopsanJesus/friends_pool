@@ -50,14 +50,16 @@
 
     border: 3px solid $secondary-color;
     border-radius: 5px;
-    box-shadow: 0 5px 5px $secondary-background-color;
 
     padding: 5px;
 
     font-size: 1.4em;
 
     &.active {
-      color: $secondary-color;
+      color: $secondary-text-color;
+      background-color: $secondary-color;
+      box-shadow: 0 5px 5px $secondary-background-color;
+      text-transform: uppercase;
     }
   }
 }

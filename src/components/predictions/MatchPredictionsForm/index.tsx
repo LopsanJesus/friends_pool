@@ -121,7 +121,9 @@ const PredictionsForm = ({
         >
           <div>★</div>
 
-          <div>{t("predictions.keyBet")}</div>
+          <div>
+            {t("predictions.keyBet")} {keyBetInput ? "✓" : ""}
+          </div>
         </div>
       )}
 
