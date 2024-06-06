@@ -67,6 +67,7 @@ i18n
             finalButton: "Final bets",
             remainingGroupPhaseKeyBets: "Remaining key bets: ★",
             keyBet: "Key bet",
+            normalBet: "Normal bet",
             allMatchesDone: "All matches filled",
             finalPredictionsDone: "Final predictions done",
             betType: {
@@ -77,6 +78,8 @@ i18n
               topScorer: "Top scorer",
               groupPoolWinner: "Group phase Papaporra winner",
             },
+            overlay:
+              "Remember that you can check any bet as key bet. You have 5 in group phase",
           },
 
           logout: {
@@ -146,6 +149,7 @@ i18n
             finalButton: "Apuestas finales",
             remainingGroupPhaseKeyBets: "Apuestas clave restantes: ★",
             keyBet: "Apuesta clave",
+            normalBet: "Apuesta normal",
             allMatchesDone: "Partidos rellenos",
             finalPredictionsDone: "Predicciones finales rellenas",
             betType: {
@@ -156,6 +160,8 @@ i18n
               topScorer: "Pichichi",
               groupPoolWinner: "Ganador de la fase de grupos de la Papaporra",
             },
+            overlay:
+              "Recuerda que puedes marcar la apuesta que quieras como apuesta clave. Tienes 5 en toda la fase de grupos.",
           },
           logout: {
             title: "Sesión cerrada",
@@ -224,6 +230,7 @@ i18n
             finalButton: "Finale-Vorhersagen",
             remainingGroupPhaseKeyBets: "Verbleibende Schlüsselbetsche: ★",
             keyBet: "Schlüsselbetsche",
+            normalBet: "Normalbetsche",
             allMatchesDone: "Alle Spiele ausgeführt",
             finalPredictionsDone: "Finale-Vorhersagen ausgeführt",
             betType: {
@@ -234,6 +241,8 @@ i18n
               topScorer: "Top-Spieler",
               groupPoolWinner: "Gewinner der Gruppenpool der Papaporra",
             },
+            overlay:
+              "Vergiss nicht, die Schlüsselbetsche, die du als Schlüsselbetsche markierst, als Schlüsselbetsche zu markieren. Du hast 5 in der Gruppenphase.",
           },
           logout: {
             title: "Sitzung beendet",

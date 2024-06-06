@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 import Button from "components/Button";
 import Loader from "components/Loader";
+import Overlay from "components/Overlay";
 
 import constants from "config/constants";
 import { parseApiBet } from "helpers/apiObjectsProcessor";
@@ -33,6 +34,7 @@ const PredictionsForm = ({
     visitorGoals: "0",
   });
   const [keyBetInput, setKeyBetInput] = useState<boolean>(false);
+  const [showOverlay, setShowOverlay] = useState<boolean>(true);
 
   const { t } = useTranslation();
   const { userId } = useUser();
@@ -73,6 +75,10 @@ const PredictionsForm = ({
 
       setKeyBetInput(false);
     }
+  };
+
+  const closeOverlay = () => {
+    setShowOverlay(false);
   };
 
   if (error) {
@@ -122,12 +128,20 @@ const PredictionsForm = ({
           <div>★</div>
 
           <div>
-            {t("predictions.keyBet")} {keyBetInput ? "✓" : ""}
+            {keyBetInput ? t("predictions.keyBet") : t("predictions.normalBet")}{" "}
+            {keyBetInput ? "✓" : ""}
           </div>
         </div>
       )}
 
       <Button text={t("buttons.save")} onClick={() => handleSubmit()} />
+
+      {showOverlay && (
+        <Overlay
+          message={t("predictions.overlay")}
+          onClose={() => closeOverlay()}
+        />
+      )}
     </div>
   );
 };

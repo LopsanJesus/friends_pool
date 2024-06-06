@@ -48,8 +48,10 @@
     gap: 5px;
     cursor: pointer;
 
-    border: 3px solid $secondary-color;
     border-radius: 5px;
+
+    color: $primary-text-color;
+    border: 3px solid $primary-text-color;
 
     padding: 5px;
 
@@ -58,6 +60,7 @@
     &.active {
       color: $secondary-text-color;
       background-color: $secondary-color;
+      border: 3px solid $secondary-color;
       box-shadow: 0 5px 5px $secondary-background-color;
       text-transform: uppercase;
     }
