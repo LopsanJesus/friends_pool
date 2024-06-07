@@ -9,7 +9,7 @@ import PageWithTopbar from "components/PageWithTopbar";
 import FinalPredictionsForm from "components/predictions/FinalPredictionsForm";
 
 import useGetView from "api/useGetView";
-import constants from "config/constants";
+import { finalBetsKeys } from "config/constants";
 import { findNextFinalBet } from "helpers/bets";
 import useUser from "hooks/useUser";
 import { FinalBetType } from "types/types";
@@ -36,7 +36,7 @@ const FinalPredictionsPage = () => {
   }, [data]);
 
   useEffect(() => {
-    setNextBetToPlace(findNextFinalBet(dataFinalBets, constants.finalBetsKeys));
+    setNextBetToPlace(findNextFinalBet(dataFinalBets, finalBetsKeys));
   }, [dataFinalBets]);
 
   if (error) {
@@ -57,7 +57,7 @@ const FinalPredictionsPage = () => {
         />
       )}
 
-      {dataFinalBets.length === constants.finalBetsKeys.length && !loading && (
+      {dataFinalBets.length === finalBetsKeys.length && !loading && (
         <div className="Predictions__empty">
           <Icon alt="checkmark" src={CheckIcon} color="green" />
           <h3>{t("predictions.finalPredictionsDone")}</h3>

@@ -6,7 +6,7 @@ import Button from "components/Button";
 import Loader from "components/Loader";
 import Overlay from "components/Overlay";
 
-import constants from "config/constants";
+import { posibleBetScores } from "config/constants";
 import { parseApiBet } from "helpers/apiObjectsProcessor";
 import { BetType, MatchType } from "types/types";
 
@@ -93,7 +93,7 @@ const PredictionsForm = ({
     <div className="PredictionsForm">
       <div className="PredictionsForm__content">
         <div className="PredictionsForm__goals">
-          {constants.posibleBetScores.map((value) => (
+          {posibleBetScores.map((value) => (
             <div
               key={value}
               onClick={() => handleLocalGoalClick(value)}
@@ -106,7 +106,7 @@ const PredictionsForm = ({
           ))}
         </div>
         <div className="PredictionsForm__goals">
-          {constants.posibleBetScores.map((value) => (
+          {posibleBetScores.map((value) => (
             <div
               key={value}
               onClick={() => handleVisitorGoalClick(value)}

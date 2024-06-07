@@ -19,7 +19,7 @@ import { BetType, MatchType } from "types/types";
 
 import CheckIcon from "assets/check.svg";
 
-import constants from "config/constants";
+import { maximumGroupPhaseKeyBets } from "config/constants";
 
 const MatchPredictions = () => {
   const [nextMatchToBet, setNextMatchToBet] = useState<MatchType>();
@@ -70,8 +70,7 @@ const MatchPredictions = () => {
 
   const keyBetsLeft = useMemo(() => {
     return (
-      constants.maximumGroupPhaseKeyBets -
-      dataBets.filter((bet) => bet.isKeyBet).length
+      maximumGroupPhaseKeyBets - dataBets.filter((bet) => bet.isKeyBet).length
     );
   }, [dataBets]);
 
