@@ -12,6 +12,7 @@ import Login from "pages/Login";
 import Logout from "pages/Logout";
 import MatchPredictionsPage from "pages/MatchPredictionsPage";
 import Matches from "pages/Matches";
+import MyPredictionsPage from "pages/MyPredictionsPage";
 import Players from "pages/Players";
 import Predictions from "pages/Predictions";
 import Profile from "pages/Profile";
@@ -49,6 +50,10 @@ const App = () => {
               <Route
                 path="/predictions/matches"
                 element={<MatchPredictionsPage />}
+              />
+              <Route
+                path="/predictions/my-predictions"
+                element={<MyPredictionsPage />}
               />
             </Route>
             <Route path="/error" element={<ErrorPage />} />

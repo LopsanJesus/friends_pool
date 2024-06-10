@@ -35,6 +35,12 @@ const Predictions = () => {
         variant="primary"
       />
 
+      <LinkButton
+        linkTo="/predictions/my-predictions"
+        text={t("predictions.myPredictionsButton")}
+        variant="primary"
+      />
+
       <LinkButton linkTo="/" text={t("buttons.back")} variant="secondary" />
     </PageWithTopbar>
   );
