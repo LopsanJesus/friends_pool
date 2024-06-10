@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import useAirtable from "api/useAirtable";
 import { processRecords } from "helpers/apiObjectsProcessor";
-
 import { DataArrayType } from "types/types";
+
+import useAirtable from "./useAirtable";
 
 interface IProps {
   databaseName: string;
@@ -26,27 +26,32 @@ const useGetView = ({
 
   useEffect(() => {
     setLoading(true);
+    setError(null);
 
-    database(databaseName)
-      .select({
-        maxRecords: 100,
-        view,
-        pageSize: 100,
-        filterByFormula: filterByFormula ?? "",
-        fields: fields ?? [],
-      })
-      .firstPage(function (err, records) {
-        if (err) {
-          setLoading(false);
-          setError("Error fetching " + databaseName);
-          return;
-        }
+    const fetchData = async () => {
+      try {
+        const response: any = await database(databaseName)
+          .select({
+            view,
+            pageSize: 100,
+            filterByFormula: filterByFormula ?? "",
+            fields: fields ?? [],
+          })
+          .all();
 
+        setData(processRecords(databaseName, response));
+      } catch (err) {
+        setError("Error fetching " + databaseName);
+        console.error(err);
+      } finally {
         setLoading(false);
-        setData(processRecords(databaseName, records));
-      });
+      }
+    };
+
+    fetchData();
+
     // eslint-disable-next-line
-  }, []);
+  }, [databaseName, view, filterByFormula, fields]);
 
   return { data, loading, error };
 };
