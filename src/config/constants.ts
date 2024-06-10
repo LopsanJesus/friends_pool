@@ -18,3 +18,11 @@ export const finalBetsPoints = [
   { key: "topScorer", points: 10 },
   { key: "groupPoolWinner", points: 5 },
 ];
+
+export const navLinks = [
+  { nameKey: "topbar.profile", link: "/profile", protected: true },
+  { nameKey: "topbar.predictions", link: "/predictions", protected: true },
+  { nameKey: "topbar.matches", link: "/matches", protected: false },
+  { nameKey: "topbar.players", link: "/players", protected: false },
+  { nameKey: "topbar.rankings", link: "/ranking", protected: false },
+];

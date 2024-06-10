@@ -6,6 +6,7 @@ import Image from "components/Image";
 import useUser from "hooks/useUser";
 
 import LogoImage from "assets/logo.png";
+import { navLinks } from "config/constants";
 
 import "./style.scss";
 
@@ -20,14 +21,6 @@ const TopBar = () => {
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
-
-  const navLinks = [
-    { name: t("topbar.profile"), link: "/profile", protected: true },
-    { name: t("topbar.predictions"), link: "/predictions", protected: true },
-    { name: t("topbar.matches"), link: "/matches", protected: false },
-    { name: t("topbar.players"), link: "/players", protected: false },
-    { name: t("topbar.rankings"), link: "/ranking", protected: false },
-  ];
 
   return (
     <div className="TopBar">
@@ -50,7 +43,7 @@ const TopBar = () => {
                   to={link.link}
                   className={location.pathname === link.link ? "active" : ""}
                 >
-                  {link.name}
+                  {t(link.nameKey)}
                 </NavLink>
               )
           )}
