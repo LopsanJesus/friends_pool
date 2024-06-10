@@ -6,6 +6,7 @@ import PageWithTopbar from "components/PageWithTopbar";
 import Separator from "components/Separator";
 
 import BookIcon from "assets/book.png";
+import EuroImage from "assets/euro-2024-logo.png";
 import WriteIcon from "assets/write.png";
 
 import useUser from "hooks/useUser";
@@ -22,11 +23,7 @@ const Home = () => {
         <div className="user-section">{t("hello", { userName })}</div>
       )}
 
-      <Image
-        size="large"
-        src="https://www.fifplay.com/img/public/euro-2024-logo.png"
-        alt="Euro 2024"
-      />
+      <Image size="large" src={EuroImage} alt="Euro 2024" />
 
       {userName && (
         <>
