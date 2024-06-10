@@ -25,8 +25,15 @@ const MatchCard = ({ match, bets }: IProps) => {
   const { t } = useTranslation();
 
   const isToday = useMemo(() => {
-    return match.date === new Date().toLocaleDateString();
-  }, [match.date]);
+    const currentDate = new Date();
+
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const hours = String(currentDate.getHours()).padStart(2, "0");
+    const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+
+    return `${day}.${month}. ${hours}:${minutes}` === match.datetime;
+  }, [match.datetime]);
 
   return (
     <div
@@ -40,7 +47,7 @@ const MatchCard = ({ match, bets }: IProps) => {
           <div className="group">
             {t("matches.group", { group: match.group })}
           </div>
-          <div className="date">{match.date}</div>
+          <div className="date">{match.datetime}</div>
         </div>
         <div className="teams">
           <div className="home">
@@ -52,8 +59,8 @@ const MatchCard = ({ match, bets }: IProps) => {
         </div>
         {isToday && (
           <div className="goals">
-            <div className="home">{match.localTeamGoals}</div>
-            <div className="visitor">{match.visitorTeamGoals}</div>
+            <div className="home">{match.localScore}</div>
+            <div className="visitor">{match.visitorScore}</div>
           </div>
         )}
 

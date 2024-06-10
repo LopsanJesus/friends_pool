@@ -97,7 +97,7 @@ const MatchPredictions = () => {
 
             <div className="Predictions__info">
               <div>{t("matches.group", { group: nextMatchToBet.group })}</div>
-              <div>{new Date(nextMatchToBet.date).toLocaleDateString()}</div>
+              <div>{nextMatchToBet.datetime}</div>
             </div>
 
             <div className="Predictions__flags">

@@ -27,11 +27,11 @@ const PredictionsForm = ({
   isThereKeyBetsLeft,
 }: IProps) => {
   const [goals, setGoals] = useState<{
-    localGoals: string;
-    visitorGoals: string;
+    localScore: string;
+    visitorScore: string;
   }>({
-    localGoals: "0",
-    visitorGoals: "0",
+    localScore: "0",
+    visitorScore: "0",
   });
   const [keyBetInput, setKeyBetInput] = useState<boolean>(false);
   const [showOverlay, setShowOverlay] = useState<boolean>(true);
@@ -44,14 +44,14 @@ const PredictionsForm = ({
   const handleLocalGoalClick = (value: string) => {
     setGoals((prevGoals) => ({
       ...prevGoals,
-      localGoals: value,
+      localScore: value,
     }));
   };
 
   const handleVisitorGoalClick = (value: string) => {
     setGoals((prevGoals) => ({
       ...prevGoals,
-      visitorGoals: value,
+      visitorScore: value,
     }));
   };
 
@@ -60,8 +60,8 @@ const PredictionsForm = ({
       const bet: BetType = {
         userId,
         matchId: match?.id,
-        localGoals: goals.localGoals,
-        visitorGoals: goals.visitorGoals,
+        localScore: goals.localScore,
+        visitorScore: goals.visitorScore,
         isKeyBet: keyBetInput !== undefined ? keyBetInput : false,
       };
 
@@ -69,8 +69,8 @@ const PredictionsForm = ({
       raiseNewBet(bet);
 
       setGoals({
-        localGoals: "0",
-        visitorGoals: "0",
+        localScore: "0",
+        visitorScore: "0",
       });
 
       setKeyBetInput(false);
@@ -98,7 +98,7 @@ const PredictionsForm = ({
               key={value}
               onClick={() => handleLocalGoalClick(value)}
               className={`goalsButton ${
-                goals.localGoals === value ? "active" : ""
+                goals.localScore === value ? "active" : ""
               } `}
             >
               {value}
@@ -111,7 +111,7 @@ const PredictionsForm = ({
               key={value}
               onClick={() => handleVisitorGoalClick(value)}
               className={`goalsButton ${
-                goals.visitorGoals === value ? "active" : ""
+                goals.visitorScore === value ? "active" : ""
               } `}
             >
               {value}
