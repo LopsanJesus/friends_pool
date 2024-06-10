@@ -93,6 +93,10 @@ const MatchPredictions = () => {
                 {t("predictions.remainingGroupPhaseKeyBets")}{" "}
                 <span>{keyBetsLeft}</span>
               </p>
+              <p>
+                {t("predictions.remainingMatches")}{" "}
+                <span>{dataMatches.length - dataBets.length}</span>
+              </p>
             </div>
 
             <div className="Predictions__info">
