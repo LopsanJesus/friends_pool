@@ -53,7 +53,9 @@ const FinalPredictionsForm = ({ betType, addNewFinalBetInserted }: IProps) => {
 
       <input type="text" onChange={(e) => setInput(e.target.value)} />
 
-      <Button text={t("buttons.save")} onClick={() => handleSubmit()} />
+      {input !== "" && (
+        <Button text={t("buttons.save")} onClick={() => handleSubmit()} />
+      )}
     </div>
   );
 };
