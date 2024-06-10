@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate } from "react-router-dom";
 
@@ -11,6 +11,7 @@ import { parseApiBet } from "helpers/apiObjectsProcessor";
 import { BetType, MatchType } from "types/types";
 
 import useInsert from "api/useInsert";
+import useOverlayStorage from "hooks/useOverlayStorage";
 import useUser from "hooks/useUser";
 
 import "./style.scss";
@@ -38,8 +39,15 @@ const PredictionsForm = ({
 
   const { t } = useTranslation();
   const { userId } = useUser();
+  const { getOverlayFromStorage, setOverlayToStorage } = useOverlayStorage();
 
   const { insert, loading, error } = useInsert({ databaseName: "Bets" });
+
+  useEffect(() => {
+    if (getOverlayFromStorage()) {
+      setShowOverlay(false);
+    }
+  }, [getOverlayFromStorage]);
 
   const handleLocalGoalClick = (value: string) => {
     setGoals((prevGoals) => ({
@@ -79,6 +87,7 @@ const PredictionsForm = ({
 
   const closeOverlay = () => {
     setShowOverlay(false);
+    setOverlayToStorage(true);
   };
 
   if (error) {
