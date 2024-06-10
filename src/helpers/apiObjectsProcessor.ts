@@ -3,7 +3,6 @@ import {
   DataArrayType,
   FinalBetType,
   MatchType,
-  MatchType2,
   UserInfoType,
   UserType,
 } from "types/types";
@@ -22,9 +21,11 @@ export const processRecords = (
           localTeam: record.get("LocalTeam") + "",
           visitorTeam: record.get("VisitorTeam") + "",
           group: record.get("Group") + "",
-          date: record.get("MatchDate") + "",
-          localTeamGoals: record.get("LocalGoals") + "",
-          visitorTeamGoals: record.get("VisitorGoals") + "",
+          datetime: record.get("Time") + "",
+          localScore: record.get("LocalScore") + "",
+          visitorScore: record.get("VisitorScore") + "",
+          isLive: record.get("IsLive"),
+          liveMinute: record.get("LiveMinute") + "",
         });
       });
 
@@ -49,10 +50,12 @@ export const processRecords = (
           id: record.id,
           userId: record.get("User") + "",
           matchId: record.get("Match") + "",
-          localGoals: record.get("LocalGoals") + "",
-          visitorGoals: record.get("VisitorGoals") + "",
+          localScore: record.get("LocalScore") + "",
+          visitorScore: record.get("VisitorScore") + "",
           userName: record.get("UserName") + "",
           isKeyBet: record.get("IsKeyBet"),
+          localTeam: record.get("LocalTeam") + "",
+          visitorTeam: record.get("VisitorTeam") + "",
         });
       });
 
@@ -87,32 +90,14 @@ export const processRecords = (
       });
 
       return finalBetsRecords;
-
-    case "Partidos":
-      let matchRecords2: MatchType2[] = [];
-
-      records.forEach((record: any) => {
-        matchRecords2?.push({
-          id: record.id,
-          localTeam: record.get("LocalTeam") + "",
-          visitorTeam: record.get("VisitorTeam") + "",
-          datetime: record.get("Time") + "",
-          localScore: record.get("LocalScore") + "",
-          visitorScore: record.get("VisitorScore") + "",
-          isLive: record.get("IsLive"),
-          liveMinute: record.get("LiveMinute") + "",
-        });
-      });
-
-      return matchRecords2;
   }
 };
 
 export const parseApiBet = ({
   userId,
   matchId,
-  localGoals,
-  visitorGoals,
+  localScore,
+  visitorScore,
   isKeyBet,
 }: BetType) => {
   return [
@@ -120,8 +105,8 @@ export const parseApiBet = ({
       fields: {
         User: [userId],
         Match: [matchId],
-        LocalGoals: localGoals,
-        VisitorGoals: visitorGoals,
+        LocalScore: localScore,
+        VisitorScore: visitorScore,
         IsKeyBet: isKeyBet,
       },
     },
