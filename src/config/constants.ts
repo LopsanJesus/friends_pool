@@ -24,5 +24,4 @@ export const navLinks = [
   { nameKey: "topbar.predictions", link: "/predictions", protected: true },
   { nameKey: "topbar.matches", link: "/matches", protected: false },
   { nameKey: "topbar.players", link: "/players", protected: false },
-  { nameKey: "topbar.rankings", link: "/ranking", protected: false },
 ];
