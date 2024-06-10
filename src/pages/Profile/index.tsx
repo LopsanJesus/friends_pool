@@ -12,6 +12,8 @@ import Separator from "components/Separator";
 import useUser from "hooks/useUser";
 import { UserInfoType } from "types/types";
 
+import "./style.scss";
+
 const Profile = () => {
   const [userData, setUserData] = useState<UserInfoType>();
 
@@ -43,7 +45,25 @@ const Profile = () => {
       {!loading && data && (
         <>
           <div className="user-info">
-            {userData?.orientation} {userData?.randomFact}
+            <div className="infoType">Apuesta</div>
+            <div className="dash">-</div>
+            <div className="infoValue">{userData?.bet}</div>
+
+            <div className="infoType">Orientación</div>
+            <div className="dash">-</div>
+            <div className="infoValue">{userData?.orientation}</div>
+
+            <div className="infoType">Religión</div>
+            <div className="dash">-</div>
+            <div className="infoValue">{userData?.religion}</div>
+
+            <div className="infoType">Dinero en la cuenta</div>
+            <div className="dash">-</div>
+            <div className="infoValue">{userData?.moneyInBank}</div>
+
+            <div className="infoType">Jugador favorito de Africa</div>
+            <div className="dash">-</div>
+            <div className="infoValue">{userData?.favoriteAfricaPlayer}</div>
           </div>
 
           <Separator />

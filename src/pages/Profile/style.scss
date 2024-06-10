@@ -1,0 +1,21 @@
+.Profile {
+  .user-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+
+    .infoType {
+      font-weight: lighter;
+    }
+
+    .dash {
+      text-align: center;
+    }
+
+    .infoValue {
+      font-weight: bold;
+    }
+  }
+}

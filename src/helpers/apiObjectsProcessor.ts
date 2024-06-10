@@ -67,9 +67,11 @@ export const processRecords = (
       records.forEach((record: any) => {
         userInfoRecords?.push({
           id: record.id,
+          bet: record.get("Bet") + "",
           orientation: record.get("Orientation") + "",
           religion: record.get("Religion") + "",
-          randomFact: record.get("RandomFact") + "",
+          moneyInBank: record.get("MoneyInBank") + "",
+          favoriteAfricaPlayer: record.get("FavoriteAfricaPlayer") + "",
           userId: record.get("User") + "",
         });
       });

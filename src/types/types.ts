@@ -30,9 +30,11 @@ export type BetType = {
 
 export type UserInfoType = {
   id: string;
+  bet: string;
   orientation: string;
   religion: string;
-  randomFact: string;
+  moneyInBank: string;
+  favoriteAfricaPlayer: string;
   userId: string;
 };
 
