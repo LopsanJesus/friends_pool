@@ -12,6 +12,8 @@ import Separator from "components/Separator";
 
 import { BetType, FinalBetType } from "types/types";
 
+import "./style.scss";
+
 const MyPredictionsPage = () => {
   const { t } = useTranslation();
   const [dataBets, setDataBets] = useState<BetType[]>([]);
@@ -54,25 +56,29 @@ const MyPredictionsPage = () => {
       {(loadingFromBets || loadingFromFinalBets) && <Loader />}
       {!loadingFromBets && !loadingFromFinalBets && (
         <>
-          {dataFinalBets.map((finalBet) => (
-            <div key={finalBet.id}>
-              <div>
-                {t("predictions.betType." + finalBet.betType)} -{" "}
-                {finalBet.betValue}
+          <div className="finalBets">
+            {dataFinalBets.map((finalBet) => (
+              <div key={finalBet.id} className="finalBet">
+                <div>{t("predictions.betType." + finalBet.betType)}</div>
+                <div> - </div>
+                <div>{finalBet.betValue}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
 
           <Separator />
-
-          {dataBets.map((bet) => (
-            <div key={bet.id}>
-              <p>
-                {bet.isKeyBet ? "★" : ""} {bet.localTeam} vs {bet.visitorTeam}{" "}
-                {bet.localScore} - {bet.visitorScore}
-              </p>
-            </div>
-          ))}
+          <div className="matchBets">
+            {dataBets.map((bet) => (
+              <div key={bet.id} className="matchBet">
+                <div>
+                  {bet.isKeyBet ? "★" : ""} {bet.localTeam} vs {bet.visitorTeam}{" "}
+                </div>
+                <div>
+                  {bet.localScore} - {bet.visitorScore}
+                </div>
+              </div>
+            ))}
+          </div>
 
           {dataBets.length === 0 && (
             <LinkButton linkTo="/predictions/matches" text={t("home.start")} />
