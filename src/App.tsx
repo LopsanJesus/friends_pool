@@ -13,6 +13,7 @@ import Logout from "pages/Logout";
 import MatchPredictionsPage from "pages/MatchPredictionsPage";
 import Matches from "pages/Matches";
 import MyPredictionsPage from "pages/MyPredictionsPage";
+import Player from "pages/Player";
 import Players from "pages/Players";
 import Predictions from "pages/Predictions";
 import Profile from "pages/Profile";
@@ -33,15 +34,16 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
             <Route path="/matches" element={<Matches />} />
             <Route path="/players" element={<Players />} />
+            <Route path="/player/:name" element={<Player />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/ranking" element={<Ranking />} />
             <Route path="/scrapper-test" element={<ScrapperTest />} />
             <Route path="/login/:token" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route element={<ProtectedRoute />}>
+              <Route path="/profile" element={<Profile />} />
               <Route path="/predictions" element={<Predictions />} />
               <Route
                 path="/predictions/final"

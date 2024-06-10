@@ -21,7 +21,7 @@ export const finalBetsPoints = [
 
 export const navLinks = [
   { nameKey: "topbar.profile", link: "/profile", protected: true },
+  { nameKey: "topbar.players", link: "/players", protected: false },
   { nameKey: "topbar.predictions", link: "/predictions", protected: true },
   { nameKey: "topbar.matches", link: "/matches", protected: false },
-  { nameKey: "topbar.players", link: "/players", protected: false },
 ];
