@@ -2,21 +2,12 @@ export type MatchType = {
   id?: string;
   localTeam: string;
   visitorTeam: string;
-  group: string;
-  date: string;
-  localTeamGoals: string;
-  visitorTeamGoals: string;
-};
-
-export type MatchType2 = {
-  id?: string;
-  localTeam: string;
-  visitorTeam: string;
   datetime: string;
   localScore: string;
   visitorScore: string;
   isLive: boolean;
   liveMinute: string;
+  group: string;
 };
 
 export type UserType = {
@@ -29,10 +20,12 @@ export type BetType = {
   id?: string;
   userId: string;
   matchId: string;
-  localGoals: string;
-  visitorGoals: string;
+  localScore: string;
+  visitorScore: string;
   userName?: string;
   isKeyBet?: boolean;
+  localTeam?: string;
+  visitorTeam?: string;
 };
 
 export type UserInfoType = {
@@ -53,7 +46,6 @@ export type FinalBetType = {
 
 export type DataArrayType =
   | MatchType[]
-  | MatchType2[]
   | BetType[]
   | UserType[]
   | UserInfoType[]
