@@ -1,6 +1,6 @@
 const flags = {
-  showMatchCardBets: false,
-  showParticipantFinalBets: false,
+  showMatchCardBets: true,
+  showParticipantFinalBets: true,
 };
 
 export default flags;
