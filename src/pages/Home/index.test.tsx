@@ -17,10 +17,6 @@ jest.mock("components/Image", () => (props: any) => (
   <img alt="alt" {...props} />
 ));
 
-jest.mock("components/LanguageSwitcher", () => () => (
-  <div>LanguageSwitcher</div>
-));
-
 jest.mock("components/LinkButton", () => (props: any) => (
   <a href={props.linkTo}>{props.text}</a>
 ));
@@ -37,11 +33,8 @@ describe("Home Component", () => {
       t: (key: string, params?: any) => {
         const translations: { [key: string]: string } = {
           hello: `Hello, ${params?.userName}`,
-          "home.predictions": "Predictions",
-          "home.start": "Start",
           "home.rules": "Rules",
           "home.rulesButton": "See Rules",
-          "home.disconnect": "Disconnect",
         };
 
         return translations[key];
@@ -61,25 +54,12 @@ describe("Home Component", () => {
       ).toBeInTheDocument();
 
       expect(
-        screen.getByRole("img", { name: "Writing icon" })
-      ).toBeInTheDocument();
-      expect(screen.getByText("Predictions")).toBeInTheDocument();
-      expect(screen.getByRole("link", { name: "Start" })).toBeInTheDocument();
-
-      expect(
         screen.getByRole("img", { name: "Rules book icon" })
       ).toBeInTheDocument();
       expect(screen.getByText("Rules")).toBeInTheDocument();
       expect(
         screen.getByRole("link", { name: "See Rules" })
       ).toBeInTheDocument();
-
-      expect(screen.getByText("LanguageSwitcher")).toBeInTheDocument();
-
-      expect(screen.getByRole("link", { name: "Disconnect" })).toHaveAttribute(
-        "href",
-        "/logout"
-      );
     });
   });
 
@@ -95,26 +75,12 @@ describe("Home Component", () => {
       ).toBeInTheDocument();
 
       expect(
-        screen.queryByRole("img", { name: "Writing icon" })
-      ).not.toBeInTheDocument();
-      expect(screen.queryByText("Predictions")).not.toBeInTheDocument();
-      expect(
-        screen.queryByRole("link", { name: "Start" })
-      ).not.toBeInTheDocument();
-
-      expect(
         screen.getByRole("img", { name: "Rules book icon" })
       ).toBeInTheDocument();
       expect(screen.getByText("Rules")).toBeInTheDocument();
       expect(
         screen.getByRole("link", { name: "See Rules" })
       ).toBeInTheDocument();
-
-      expect(screen.getByText("LanguageSwitcher")).toBeInTheDocument();
-
-      expect(
-        screen.queryByRole("link", { name: "Disconnect" })
-      ).not.toBeInTheDocument();
     });
   });
 });

@@ -26,6 +26,9 @@ export type BetType = {
   isKeyBet?: boolean;
   localTeam?: string;
   visitorTeam?: string;
+  points?: number;
+  finalLocalScore?: string;
+  finalVisitorScore?: string;
 };
 
 export type UserInfoType = {

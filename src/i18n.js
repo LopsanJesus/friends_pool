@@ -21,7 +21,7 @@ i18n
             predictions: "Predictions",
             matches: "Matches",
             players: "Players",
-            rankings: "Rankings",
+            ranking: "Ranking",
           },
           home: {
             predictions: "Make your predictions",
@@ -105,7 +105,7 @@ i18n
             predictions: "Predicciones",
             matches: "Partidos",
             players: "Participantes",
-            rankings: "Clasificación",
+            ranking: "Clasificación",
           },
           home: {
             predictions: "Realiza tus predicciones",
@@ -189,7 +189,7 @@ i18n
             predictions: "Vorhersagen",
             matches: "Spiele",
             players: "Spieler",
-            rankings: "Rangliste",
+            ranking: "Rangliste",
           },
           home: {
             predictions: "Vorhersagen anlegen",

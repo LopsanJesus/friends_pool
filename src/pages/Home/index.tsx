@@ -7,7 +7,6 @@ import Separator from "components/Separator";
 
 import BookIcon from "assets/book.png";
 import EuroImage from "assets/euro-2024-logo.png";
-import WriteIcon from "assets/write.png";
 
 import useUser from "hooks/useUser";
 
@@ -24,24 +23,6 @@ const Home = () => {
       )}
 
       <Image size="large" src={EuroImage} alt="Euro 2024" />
-
-      {userName && (
-        <>
-          <Separator />
-
-          <div className="banner-section">
-            <Image size="small" src={WriteIcon} alt="Writing icon" />
-
-            <div>{t("home.predictions")}</div>
-
-            <LinkButton
-              linkTo="/predictions"
-              text={t("home.start")}
-              variant="primary"
-            />
-          </div>
-        </>
-      )}
 
       <Separator />
 
