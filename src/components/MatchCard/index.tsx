@@ -17,10 +17,11 @@ import "./style.scss";
 interface IProps {
   match: MatchType;
   bets: BetType[];
+  openAtFirst?: boolean;
 }
 
-const MatchCard = ({ match, bets }: IProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
+  const [isOpen, setIsOpen] = useState(openAtFirst);
 
   const { t } = useTranslation();
 

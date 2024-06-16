@@ -53,7 +53,7 @@ const Matches = () => {
         !loadingBets &&
         matchesData &&
         betsData &&
-        matchesData.map((match: MatchType) => {
+        matchesData.map((match: MatchType, index) => {
           const betsForMatch = betsData.filter((bet: BetType) => {
             return bet.matchId === match.id;
           });
@@ -63,6 +63,7 @@ const Matches = () => {
               key={match.id}
               match={match}
               bets={betsForMatch}
+              openAtFirst={index === 0}
             ></MatchCard>
           );
         })}
