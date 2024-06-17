@@ -9,6 +9,7 @@ import { BetType, MatchType } from "types/types";
 import Loader from "components/Loader";
 import MatchCard from "components/MatchCard";
 import PageWithTopbar from "components/PageWithTopbar";
+import useOrderMatches from "hooks/useOrderMatches";
 
 import "./style.scss";
 
@@ -17,6 +18,7 @@ const Matches = () => {
   const [betsData, setBetsData] = useState<BetType[]>([]);
 
   const { t } = useTranslation();
+  const { orderMatches } = useOrderMatches();
 
   const {
     data: dataMatches,
@@ -37,10 +39,10 @@ const Matches = () => {
 
   useEffect(() => {
     if (dataMatches && dataBets) {
-      setMatchesData(dataMatches as MatchType[]);
       setBetsData(dataBets as BetType[]);
+      setMatchesData(orderMatches(dataMatches as MatchType[]));
     }
-  }, [dataBets, dataMatches]);
+  }, [dataBets, dataMatches, orderMatches]);
 
   if (errorMatches || errorBets) {
     return <Navigate to="/error" replace />;

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import FlagImage from "components/FlagImage";
@@ -12,6 +12,7 @@ import UpArrowIcon from "assets/up-arrow.png";
 
 import flags from "config/flags";
 
+import useDates from "hooks/useDates";
 import "./style.scss";
 
 interface IProps {
@@ -24,17 +25,7 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
   const [isOpen, setIsOpen] = useState(openAtFirst);
 
   const { t } = useTranslation();
-
-  const isToday = useMemo(() => {
-    const currentDate = new Date();
-
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const hours = String(currentDate.getHours()).padStart(2, "0");
-    const minutes = String(currentDate.getMinutes()).padStart(2, "0");
-
-    return `${day}.${month}. ${hours}:${minutes}` === match.datetime;
-  }, [match.datetime]);
+  const { isToday, removeDay } = useDates();
 
   return (
     <div
@@ -48,7 +39,11 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
           <div className="group">
             {t("matches.group", { group: match.group })}
           </div>
-          <div className="date">{match.datetime}</div>
+          <div className="date">
+            {isToday(match.datetime)
+              ? removeDay(match.datetime)
+              : match.datetime}
+          </div>
         </div>
         <div className="teams">
           <div className="home">
@@ -58,7 +53,7 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
             <FlagImage country={match.visitorTeam} />
           </div>
         </div>
-        {isToday && (
+        {match.localScore !== "-" && match.visitorScore !== "-" && (
           <div className="goals">
             <div className="home">{match.localScore}</div>
             <div className="visitor">{match.visitorScore}</div>

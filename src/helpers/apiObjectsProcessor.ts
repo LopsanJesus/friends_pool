@@ -56,7 +56,6 @@ export const processRecords = (
           isKeyBet: record.get("IsKeyBet"),
           localTeam: record.get("LocalTeam") + "",
           visitorTeam: record.get("VisitorTeam") + "",
-          points: record.get("Points"),
           finalLocalScore: record.get("FinalLocalScore") + "",
           finalVisitorScore: record.get("FinalVisitorScore") + "",
         });
