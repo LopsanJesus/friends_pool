@@ -84,7 +84,11 @@ i18n
             overlay:
               "Remember that you can check any bet as key bet. You have 5 in group phase",
           },
-
+          ranking: {
+            title: "Ranking",
+            exactResultsLegend: "3️⃣ Number of exact results",
+            keyPointsLegend: "★ Number of points won with key bets",
+          },
           logout: {
             title: "Session closed",
           },
@@ -169,6 +173,11 @@ i18n
             overlay:
               "Recuerda que puedes marcar la apuesta que quieras como apuesta clave. Tienes 5 en toda la fase de grupos.",
           },
+          ranking: {
+            title: "Clasificación",
+            exactResultsLegend: "3️⃣ Partidos exactos",
+            keyPointsLegend: "★ Puntos ganados con apuestas clave",
+          },
           logout: {
             title: "Sesión cerrada",
           },
@@ -252,6 +261,11 @@ i18n
             },
             overlay:
               "Vergiss nicht, die Schlüsselbetsche, die du als Schlüsselbetsche markierst, als Schlüsselbetsche zu markieren. Du hast 5 in der Gruppenphase.",
+          },
+          ranking: {
+            title: "Rangliste",
+            exactResultsLegend: "3️⃣ Anzahl der exakten Spiele",
+            keyPointsLegend: "★ Anzahl der Punkte mit Schlüsselbetsche",
           },
           logout: {
             title: "Sitzung beendet",

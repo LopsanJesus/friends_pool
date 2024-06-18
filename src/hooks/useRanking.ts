@@ -51,15 +51,12 @@ const useRanking = () => {
     });
 
     return Object.values(userPoints).sort((a, b) => {
-      // Comparar por totalPoints (primero)
       if (b.totalPoints !== a.totalPoints) {
         return b.totalPoints - a.totalPoints;
       }
-      // Comparar por exactMatches (segundo)
       if (b.exactMatches !== a.exactMatches) {
         return b.exactMatches - a.exactMatches;
       }
-      // Comparar por keyPoints (tercero)
       return b.keyPoints - a.keyPoints;
     });
   }, [dataBets]);
