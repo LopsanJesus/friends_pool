@@ -1,0 +1,84 @@
+{
+  "hello": "Hola, {{userName}}",
+  "welcome": "Bienvenido, {{userName}}",
+  "topbar": {
+    "profile": "Perfil",
+    "predictions": "Predicciones",
+    "matches": "Partidos",
+    "players": "Participantes",
+    "ranking": "Clasificación"
+  },
+  "home": {
+    "predictions": "Realiza tus predicciones",
+    "start": "Empezar",
+    "rules": "¿Aún no tienes claras las reglas?",
+    "rulesButton": "Consultar las reglas",
+    "disconnect": "Desconectar"
+  },
+  "profile": {
+    "title": "Perfil - {{userName}}"
+  },
+  "matches": {
+    "title": "Partidos",
+    "group": "Grupo {{group}}"
+  },
+  "players": {
+    "title": "Participantes"
+  },
+  "rules": {
+    "title": "Reglas del Torneo",
+    "matchPredictions": "Predicciones de partidos",
+    "onePoint": "Por acertar el resultado 1X2 (1 punto)",
+    "threePoints": "Por acertar el resultado exacto (3 puntos)",
+    "keyBet": "Por acertar una apuesta clave★ (doble de puntos)",
+    "maxKeyBetsGroupPhase": "Max. 5 apuestas clave en la fase de grupos",
+    "maxKeyBetsFinalPhase": "Max. 3 apuestas clave en la fase final",
+    "finalPredictions": "Predicciones finales",
+    "points": {
+      "winner": "Ganador (15 puntos)",
+      "finalist": "Finalista (10 puntos)",
+      "semifinalist1": "Semifinalista 1 (5 puntos)",
+      "semifinalist2": "Semifinalista 2 (5 puntos)",
+      "topScorer": "Pichichi (10 puntos)",
+      "groupPoolWinner": "Ganador de la fase de grupos de la Papaporra (5 puntos)"
+    },
+    "deadline": "El miércoles 12 de junio a las 23:59 se cierran las predicciones."
+  },
+  "predictions": {
+    "title": "Predicciones de {{userName}}",
+    "rulesButton": "Consultar las reglas",
+    "matchesButton": "Predicciones de partidos",
+    "finalButton": "Apuestas finales",
+    "myPredictions": "Mis predicciones",
+    "myPredictionsButton": "Mis predicciones realizadas",
+    "remainingGroupPhaseKeyBets": "Apuestas clave restantes: ★",
+    "remainingMatches": "Partidos restantes: ",
+    "keyBet": "Apuesta clave",
+    "normalBet": "Apuesta normal",
+    "allMatchesDone": "Partidos rellenos",
+    "finalPredictionsDone": "Predicciones finales rellenas",
+    "betType": {
+      "semifinalist1": "Semifinalista 1",
+      "semifinalist2": "Semifinalista 2",
+      "finalist": "Finalista",
+      "winner": "Ganador",
+      "topScorer": "Pichichi",
+      "groupPoolWinner": "Ganador de la fase de grupos de la Papaporra"
+    },
+    "overlay": "Recuerda que puedes marcar la apuesta que quieras como apuesta clave. Tienes 5 en toda la fase de grupos."
+  },
+  "ranking": {
+    "title": "Clasificación",
+    "exactResultsLegend": "3️⃣ Partidos exactos",
+    "keyPointsLegend": "★ Puntos ganados con apuestas clave"
+  },
+  "logout": {
+    "title": "Sesión cerrada"
+  },
+  "buttons": {
+    "save": "Guardar",
+    "back": "Volver",
+    "access": "Acceder",
+    "home": "Inicio"
+  }
+}

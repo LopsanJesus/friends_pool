@@ -1,0 +1,84 @@
+{
+  "hello": "Hallo, {{userName}}",
+  "welcome": "Willkommen, {{userName}}",
+  "topbar": {
+    "profile": "Profil",
+    "predictions": "Vorhersagen",
+    "matches": "Spiele",
+    "players": "Spieler",
+    "ranking": "Rangliste"
+  },
+  "home": {
+    "predictions": "Vorhersagen anlegen",
+    "start": "Starten",
+    "rules": "Fragen Sie nach den Regeln?",
+    "rulesButton": "Regeln prüfen",
+    "disconnect": "Abmelden"
+  },
+  "profile": {
+    "title": "Profil - {{userName}}"
+  },
+  "matches": {
+    "title": "Spiele",
+    "group": "Gruppe {{group}}"
+  },
+  "players": {
+    "title": "Spieler"
+  },
+  "rules": {
+    "title": "Tourenregeln",
+    "matchPredictions": "Vorhersagen von Spielen",
+    "onePoint": "Von einem Spiel 1X2 (1 Punkt)",
+    "threePoints": "Von einem Spiel genau (3 Punkte)",
+    "keyBet": "Von einer Schlüsselbetsche★ (Doppelte Punkte)",
+    "maxKeyBetsGroupPhase": "Max. 5 Schlüsselbetsche in der Gruppenphase",
+    "maxKeyBetsFinalPhase": "Max. 3 Schlüsselbetsche in der Finale",
+    "finalPredictions": "Vorhersagen der Finale",
+    "points": {
+      "winner": "Gewinner (15 Punkte)",
+      "finalist": "Finalist (10 Punkte)",
+      "semifinalist1": "Semifinalist 1 (5 Punkte)",
+      "semifinalist2": "Semifinalist 2 (5 Punkte)",
+      "topScorer": "Top-Spieler (10 Punkte)",
+      "groupPoolWinner": "Gewinner der Gruppenpool der Papaporra (5 Punkte)"
+    },
+    "deadline": "Die Deadline für die Vorhersagen ist am 12.06.2022 um 23:59"
+  },
+  "predictions": {
+    "title": "Vorhersagen von {{userName}}",
+    "rulesButton": "Regeln prüfen",
+    "matchesButton": "Vorhersagen von Spiele",
+    "finalButton": "Finale-Vorhersagen",
+    "myPredictions": "Vorhersagen von meinen Spielen",
+    "myPredictionsButton": "Vorhersagen von meinen Spielen",
+    "remainingGroupPhaseKeyBets": "Verbleibende Schlüsselbetsche: ★",
+    "remainingMatches": "Verbleibende Spiele: ",
+    "keyBet": "Schlüsselbetsche",
+    "normalBet": "Normalbetsche",
+    "allMatchesDone": "Alle Spiele ausgeführt",
+    "finalPredictionsDone": "Finale-Vorhersagen ausgeführt",
+    "betType": {
+      "semifinalist1": "Semifinalist 1",
+      "semifinalist2": "Semifinalist 2",
+      "finalist": "Finalist",
+      "winner": "Gewinner",
+      "topScorer": "Top-Spieler",
+      "groupPoolWinner": "Gewinner der Gruppenpool der Papaporra"
+    },
+    "overlay": "Vergiss nicht, die Schlüsselbetsche, die du als Schlüsselbetsche markierst, als Schlüsselbetsche zu markieren. Du hast 5 in der Gruppenphase."
+  },
+  "ranking": {
+    "title": "Rangliste",
+    "exactResultsLegend": "3️⃣ Anzahl der exakten Spiele",
+    "keyPointsLegend": "★ Anzahl der Punkte mit Schlüsselbetsche"
+  },
+  "logout": {
+    "title": "Sitzung beendet"
+  },
+  "buttons": {
+    "save": "Speichern",
+    "back": "Zurück",
+    "access": "Zugriff",
+    "home": "Start"
+  }
+}

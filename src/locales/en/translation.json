@@ -1,0 +1,84 @@
+{
+  "hello": "Hello, {{userName}}",
+  "welcome": "Welcome, {{userName}}",
+  "topbar": {
+    "profile": "Profile",
+    "predictions": "Predictions",
+    "matches": "Matches",
+    "players": "Players",
+    "ranking": "Ranking"
+  },
+  "home": {
+    "predictions": "Make your predictions",
+    "start": "Start",
+    "rules": "Any doubt about the rules?",
+    "rulesButton": "Check the rules",
+    "disconnect": "Disconnect"
+  },
+  "profile": {
+    "title": "Profile - {{userName}}"
+  },
+  "matches": {
+    "title": "Matches",
+    "group": "Group {{group}}"
+  },
+  "players": {
+    "title": "Players"
+  },
+  "rules": {
+    "title": "Euro 2024 Rules",
+    "matchPredictions": "Match predictions",
+    "onePoint": "If you hit 1X2 result - 1 point",
+    "threePoints": "If you hit the exact result - 3 points",
+    "keyBet": "If you hit one key bet★ - double points",
+    "maxKeyBetsGroupPhase": "Max. 5 key bets in the group phase",
+    "maxKeyBetsFinalPhase": "Max. 3 key bets in the final phase",
+    "finalPredictions": "Final predictions",
+    "points": {
+      "groupPoolWinner": "Group phase Papaporra winner - 3 points",
+      "finalist": "Finalist - 10 points",
+      "winner": "Winner - 15 point",
+      "topScorer": "Top scorer - 10 point",
+      "semifinalist1": "Semifinalist 1 - 5 point",
+      "semifinalist2": "Semifinalist 2 - 5 point"
+    },
+    "deadline": "The deadline for filling predictions is Wednesday, 12 June at 23:59"
+  },
+  "predictions": {
+    "title": "Predictions of {{userName}}",
+    "rulesButton": "Check the rules",
+    "matchesButton": "Predictions of matches",
+    "finalButton": "Final bets",
+    "myPredictions": "My predictions",
+    "myPredictionsButton": "My made predictions",
+    "remainingGroupPhaseKeyBets": "Remaining key bets: ★",
+    "remainingMatches": "Remaining matches: ",
+    "keyBet": "Key bet",
+    "normalBet": "Normal bet",
+    "allMatchesDone": "All matches filled",
+    "finalPredictionsDone": "Final predictions done",
+    "betType": {
+      "semifinalist1": "Semifinalist 1",
+      "semifinalist2": "Semifinalist 2",
+      "finalist": "Finalist",
+      "winner": "Winner",
+      "topScorer": "Top scorer",
+      "groupPoolWinner": "Group phase Papaporra winner"
+    },
+    "overlay": "Remember that you can check any bet as key bet. You have 5 in group phase"
+  },
+  "ranking": {
+    "title": "Ranking",
+    "exactResultsLegend": "3️⃣ Number of exact results",
+    "keyPointsLegend": "★ Number of points won with key bets"
+  },
+  "logout": {
+    "title": "Session closed"
+  },
+  "buttons": {
+    "save": "Save",
+    "back": "Back",
+    "access": "Access",
+    "home": "Home"
+  }
+}
