@@ -1,0 +1,24 @@
+.Ranking {
+  .table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+      align-items: center;
+
+      .user {
+        font-size: 1.5em;
+      }
+
+      .points {
+        text-align: right;
+        font-size: 2em;
+        font-weight: bold;
+      }
+    }
+  }
+}

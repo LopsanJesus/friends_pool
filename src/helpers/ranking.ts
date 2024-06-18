@@ -1,6 +1,5 @@
 import { BetType } from "types/types";
 
-// Helper function to convert score from string to number
 const convertScore = (score: string): number => {
   return score === "+" ? 3 : parseInt(score, 10);
 };
@@ -10,6 +9,10 @@ const convertFinalScore = (score: string): number => {
 };
 
 export const calculatePoints = (bet: BetType) => {
+  let points = 0;
+  let exactMatches = 0;
+  let keyPoints = 0;
+
   if (
     bet.finalLocalScore !== undefined &&
     bet.finalVisitorScore !== undefined
@@ -19,10 +22,9 @@ export const calculatePoints = (bet: BetType) => {
     const finalLocalScore = convertFinalScore(bet.finalLocalScore);
     const finalVisitorScore = convertFinalScore(bet.finalVisitorScore);
 
-    let points = 0;
-
     if (localScore === finalLocalScore && visitorScore === finalVisitorScore) {
       points = 3; // Exact match
+      exactMatches = 1;
     } else if (
       (localScore > visitorScore && finalLocalScore > finalVisitorScore) ||
       (localScore < visitorScore && finalLocalScore < finalVisitorScore) ||
@@ -32,10 +34,10 @@ export const calculatePoints = (bet: BetType) => {
     }
 
     if (bet.isKeyBet) {
+      keyPoints = points;
       points *= 2; // Double points for key bet
     }
-
-    return points;
   }
-  return 0; // No points
+
+  return { exactMatches, points, keyPoints };
 };

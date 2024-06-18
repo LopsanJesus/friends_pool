@@ -8,6 +8,8 @@ type UserRanking = {
   userId: string;
   userName: string;
   totalPoints: number;
+  exactMatches: number;
+  keyPoints: number;
 };
 
 const useRanking = () => {
@@ -27,27 +29,39 @@ const useRanking = () => {
     }
   }, [dataFromBets]);
 
-  // Memoize the ranking calculation
   const ranking = useMemo(() => {
     const userPoints: { [key: string]: UserRanking } = {};
 
     dataBets.forEach((bet) => {
-      const points = calculatePoints(bet);
+      const { points, exactMatches, keyPoints } = calculatePoints(bet);
 
       if (userPoints[bet.userId]) {
         userPoints[bet.userId].totalPoints += points;
+        userPoints[bet.userId].exactMatches += exactMatches;
+        userPoints[bet.userId].keyPoints += keyPoints;
       } else {
         userPoints[bet.userId] = {
           userId: bet.userId,
           userName: bet.userName || "",
           totalPoints: points,
+          exactMatches,
+          keyPoints,
         };
       }
     });
 
-    return Object.values(userPoints).sort(
-      (a, b) => b.totalPoints - a.totalPoints
-    );
+    return Object.values(userPoints).sort((a, b) => {
+      // Comparar por totalPoints (primero)
+      if (b.totalPoints !== a.totalPoints) {
+        return b.totalPoints - a.totalPoints;
+      }
+      // Comparar por exactMatches (segundo)
+      if (b.exactMatches !== a.exactMatches) {
+        return b.exactMatches - a.exactMatches;
+      }
+      // Comparar por keyPoints (tercero)
+      return b.keyPoints - a.keyPoints;
+    });
   }, [dataBets]);
 
   return {
