@@ -8,7 +8,10 @@ const useScraper = (url: string, interval: number) => {
   const [fetchedData, setFetchedData] = useState<boolean>(false);
 
   useEffect(() => {
-    if (localScrapping) {
+    const now = new Date();
+    const currentHour = now.getHours();
+
+    if (localScrapping && currentHour >= 14 && currentHour <= 23) {
       const fetchData = async () => {
         setLoading(true);
         setFetchedData(false);
