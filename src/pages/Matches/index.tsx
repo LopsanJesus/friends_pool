@@ -11,7 +11,6 @@ import { BetType, MatchType } from "types/types";
 import Loader from "components/Loader";
 import MatchCard from "components/MatchCard";
 import PageWithTopbar from "components/PageWithTopbar";
-import useOrderMatches from "hooks/useOrderMatches";
 
 import "./style.scss";
 
