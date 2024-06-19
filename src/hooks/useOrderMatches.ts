@@ -29,11 +29,13 @@ const useOrderMatches = () => {
     (matches: MatchType[]) => {
       const futureMatches: MatchType[] = [];
       const pastMatches: MatchType[] = [];
+      const liveMatches: MatchType[] = [];
 
       matches.forEach((match) => {
         const matchDate = new Date(parseCustomDateTime(match.datetime));
 
-        if (matchDate.getTime() === today.getTime()) {
+        if (match.isLive) {
+          liveMatches.push(match);
         } else if (matchDate > today) {
           futureMatches.push(match);
         } else {
@@ -41,7 +43,7 @@ const useOrderMatches = () => {
         }
       });
 
-      return [...futureMatches, ...pastMatches];
+      return [...liveMatches, ...futureMatches, ...pastMatches];
     },
     [parseCustomDateTime, today]
   );
