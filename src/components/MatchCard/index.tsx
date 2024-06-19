@@ -40,6 +40,7 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
           <div className="group">
             {t("matches.group", { group: match.group })}
           </div>
+          {match.isLive && <div className="minute">{match.liveMinute}'</div>}
           {match.isLive ? (
             <div className="live">LIVE</div>
           ) : (
