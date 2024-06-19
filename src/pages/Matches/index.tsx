@@ -4,6 +4,8 @@ import { Navigate } from "react-router-dom";
 
 import useGetView from "api/useGetView";
 
+import useBets from "hooks/useBets";
+import useOrderMatches from "hooks/useOrderMatches";
 import { BetType, MatchType } from "types/types";
 
 import Loader from "components/Loader";
@@ -19,6 +21,7 @@ const Matches = () => {
 
   const { t } = useTranslation();
   const { orderMatches } = useOrderMatches();
+  const { bets, loading: loadingBets, error: errorBets } = useBets();
 
   const {
     data: dataMatches,
@@ -28,21 +31,12 @@ const Matches = () => {
     databaseName: "Matches",
   });
 
-  const {
-    data: dataBets,
-    loading: loadingBets,
-    error: errorBets,
-  } = useGetView({
-    databaseName: "Bets",
-    view: "BetsWithUser",
-  });
-
   useEffect(() => {
-    if (dataMatches && dataBets) {
-      setBetsData(dataBets as BetType[]);
+    if (dataMatches && bets) {
+      setBetsData(bets);
       setMatchesData(orderMatches(dataMatches as MatchType[]));
     }
-  }, [dataBets, dataMatches, orderMatches]);
+  }, [dataMatches, bets, orderMatches]);
 
   if (errorMatches || errorBets) {
     return <Navigate to="/error" replace />;
@@ -66,7 +60,7 @@ const Matches = () => {
               match={match}
               bets={betsForMatch}
               openAtFirst={index === 0}
-            ></MatchCard>
+            />
           );
         })}
     </PageWithTopbar>
