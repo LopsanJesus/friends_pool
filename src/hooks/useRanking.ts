@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 
-import useGetView from "api/useGetView";
 import { calculatePoints } from "helpers/ranking";
 import { BetType } from "types/types";
+import useBets from "./useBets";
 
 type UserRanking = {
   userId: string;
@@ -14,20 +14,13 @@ type UserRanking = {
 
 const useRanking = () => {
   const [dataBets, setDataBets] = useState<BetType[]>([]);
-
-  const {
-    data: dataFromBets,
-    loading: loadingFromBets,
-    error: errorFromBets,
-  } = useGetView({
-    databaseName: "Bets",
-  });
+  const { bets, loading, error } = useBets();
 
   useEffect(() => {
-    if (dataFromBets) {
-      setDataBets(dataFromBets as BetType[]);
+    if (bets) {
+      setDataBets(bets as BetType[]);
     }
-  }, [dataFromBets]);
+  }, [bets]);
 
   const ranking = useMemo(() => {
     const userPoints: { [key: string]: UserRanking } = {};
@@ -63,8 +56,8 @@ const useRanking = () => {
 
   return {
     ranking,
-    loading: loadingFromBets,
-    error: errorFromBets,
+    loading,
+    error,
   };
 };
 
