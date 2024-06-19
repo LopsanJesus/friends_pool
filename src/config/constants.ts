@@ -1,3 +1,6 @@
+export const scraperURL = "https://sports-scrapper.onrender.com/results";
+export const scraperInterval = 5 * 60 * 1000; // 5 minutes
+
 export const maximumGroupPhaseKeyBets = 5;
 export const posibleBetScores = ["0", "1", "2", "+"];
 

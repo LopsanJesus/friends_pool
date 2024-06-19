@@ -4,8 +4,10 @@ import { Navigate } from "react-router-dom";
 
 import useGetView from "api/useGetView";
 
+import { scraperInterval, scraperURL } from "config/constants";
 import useBets from "hooks/useBets";
 import useOrderMatches from "hooks/useOrderMatches";
+import useScraper from "hooks/useScraper";
 import { BetType, MatchType } from "types/types";
 
 import Loader from "components/Loader";
@@ -21,21 +23,51 @@ const Matches = () => {
   const { t } = useTranslation();
   const { orderMatches } = useOrderMatches();
   const { bets, loading: loadingBets, error: errorBets } = useBets();
+  const {
+    fetchedData,
+    loading: loadingScraper,
+    error: errorScraper,
+  } = useScraper(scraperURL, scraperInterval);
 
   const {
     data: dataMatches,
     loading: loadingMatches,
     error: errorMatches,
+    forceRefetch,
   } = useGetView({
     databaseName: "Matches",
   });
 
   useEffect(() => {
-    if (dataMatches && bets) {
+    if (loadingScraper) {
+      console.log("Loading scraper");
+    }
+  }, [loadingScraper]);
+
+  useEffect(() => {
+    if (errorScraper) {
+      console.log("Scraper error");
+    }
+  }, [errorScraper]);
+
+  useEffect(() => {
+    if (fetchedData) {
+      forceRefetch();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchedData]);
+
+  useEffect(() => {
+    if (bets) {
       setBetsData(bets);
+    }
+  }, [bets]);
+
+  useEffect(() => {
+    if (dataMatches) {
       setMatchesData(orderMatches(dataMatches as MatchType[]));
     }
-  }, [dataMatches, bets, orderMatches]);
+  }, [dataMatches, orderMatches]);
 
   if (errorMatches || errorBets) {
     return <Navigate to="/error" replace />;

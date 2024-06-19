@@ -1,4 +1,5 @@
 import axios from "axios";
+import { scraperURL } from "config/constants";
 import { useEffect, useState } from "react";
 
 interface ScrapedData {
@@ -13,9 +14,7 @@ const ScrapperTest = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<ScrapedData>(
-          "https://sports-scrapper.onrender.com/scrape"
-        );
+        const response = await axios.get<ScrapedData>(scraperURL);
         setData(response.data);
       } catch (error) {
         if (axios.isAxiosError(error)) {
