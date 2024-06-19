@@ -1,5 +1,5 @@
 import axios from "axios";
-import { localScrapping } from "config/constants";
+import flags from "config/flags";
 import { useEffect, useState } from "react";
 
 const useScraper = (url: string, interval: number) => {
@@ -11,7 +11,7 @@ const useScraper = (url: string, interval: number) => {
     const now = new Date();
     const currentHour = now.getHours();
 
-    if (localScrapping && currentHour >= 14 && currentHour <= 23) {
+    if (flags.autoScrapping && currentHour >= 14 && currentHour <= 23) {
       const fetchData = async () => {
         setLoading(true);
         setFetchedData(false);
