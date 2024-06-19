@@ -13,6 +13,7 @@ import UpArrowIcon from "assets/up-arrow.png";
 import flags from "config/flags";
 
 import useDates from "hooks/useDates";
+
 import "./style.scss";
 
 interface IProps {
@@ -39,6 +40,7 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
           <div className="group">
             {t("matches.group", { group: match.group })}
           </div>
+          {match.isLive && <div className="live">ON LIVE</div>}
           <div className="date">
             {isToday(match.datetime)
               ? removeDay(match.datetime)
