@@ -34,7 +34,7 @@ const useOrderMatches = () => {
       matches.forEach((match) => {
         const matchDate = new Date(parseCustomDateTime(match.datetime));
 
-        if (match.isLive) {
+        if (match.isLive || match.liveMinute === "Descanso") {
           liveMatches.push(match);
         } else if (matchDate > today) {
           futureMatches.push(match);
