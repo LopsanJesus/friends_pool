@@ -40,12 +40,15 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
           <div className="group">
             {t("matches.group", { group: match.group })}
           </div>
-          {match.isLive && <div className="live">ON LIVE</div>}
-          <div className="date">
-            {isToday(match.datetime)
-              ? removeDay(match.datetime)
-              : match.datetime}
-          </div>
+          {match.isLive ? (
+            <div className="live">LIVE</div>
+          ) : (
+            <div className="date">
+              {isToday(match.datetime)
+                ? removeDay(match.datetime)
+                : match.datetime}
+            </div>
+          )}
         </div>
         <div className="teams">
           <div className="home">
