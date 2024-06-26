@@ -64,8 +64,18 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
         </div>
         {match.localScore !== "-" && match.visitorScore !== "-" && (
           <div className="goals">
-            <div className="home">{match.localScore}</div>
-            <div className="visitor">{match.visitorScore}</div>
+            <div
+              className={`home ${match.clasified === "1" ? "clasified" : ""}`}
+            >
+              {match.localScore}
+            </div>
+            <div
+              className={`visitor ${
+                match.clasified === "2" ? "clasified" : ""
+              }`}
+            >
+              {match.visitorScore}
+            </div>
           </div>
         )}
 

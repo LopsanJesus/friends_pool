@@ -36,6 +36,7 @@ const PredictionsForm = ({
   });
   const [keyBetInput, setKeyBetInput] = useState<boolean>(false);
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
+  const [clasified, setClasified] = useState<string>("1");
 
   const { t } = useTranslation();
   const { userId } = useUser();
@@ -71,6 +72,7 @@ const PredictionsForm = ({
         localScore: goals.localScore,
         visitorScore: goals.visitorScore,
         isKeyBet: keyBetInput !== undefined ? keyBetInput : false,
+        clasified: clasified,
       };
 
       insert(parseApiBet(bet));
@@ -129,6 +131,17 @@ const PredictionsForm = ({
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="PredictionsForm__clasified">
+        Quien se clasifica?
+        <select
+          value={clasified}
+          onChange={(e) => setClasified(e.target.value)}
+        >
+          <option value="1">{match.localTeam}</option>
+          <option value="2">{match.visitorTeam}</option>
+        </select>
       </div>
 
       {isThereKeyBetsLeft && (

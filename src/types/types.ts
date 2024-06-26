@@ -8,6 +8,7 @@ export type MatchType = {
   isLive: boolean;
   liveMinute: string;
   group: string;
+  clasified?: string;
 };
 
 export type UserType = {
@@ -28,6 +29,8 @@ export type BetType = {
   visitorTeam?: string;
   finalLocalScore?: string;
   finalVisitorScore?: string;
+  clasified?: string;
+  finalClasified?: string;
 };
 
 export type UserInfoType = {

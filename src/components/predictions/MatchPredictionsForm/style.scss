@@ -40,6 +40,21 @@
     }
   }
 
+  &__clasified {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    select {
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 1.2em;
+      border: 2px solid $tertiary-text-color;
+    }
+  }
+
   &__keyBet {
     display: flex;
     flex-direction: row;

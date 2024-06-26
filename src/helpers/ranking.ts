@@ -33,6 +33,10 @@ export const calculatePoints = (bet: BetType) => {
       points = 1; // Correct sign
     }
 
+    if (bet.clasified !== "undefined" && bet.clasified === bet.finalClasified) {
+      points += 1;
+    }
+
     if (bet.isKeyBet) {
       keyPoints = points;
       points *= 2; // Double points for key bet

@@ -26,6 +26,7 @@ export const processRecords = (
           visitorScore: record.get("VisitorScore") + "",
           isLive: record.get("IsLive"),
           liveMinute: record.get("LiveMinute") + "",
+          clasified: record.get("Clasified") + "",
         });
       });
 
@@ -58,6 +59,8 @@ export const processRecords = (
           visitorTeam: record.get("VisitorTeam") + "",
           finalLocalScore: record.get("FinalLocalScore") + "",
           finalVisitorScore: record.get("FinalVisitorScore") + "",
+          clasified: record.get("Clasified") + "",
+          finalClasified: record.get("FinalClasified") + "",
         });
       });
 
@@ -103,6 +106,7 @@ export const parseApiBet = ({
   localScore,
   visitorScore,
   isKeyBet,
+  clasified,
 }: BetType) => {
   return [
     {
@@ -112,6 +116,7 @@ export const parseApiBet = ({
         LocalScore: localScore,
         VisitorScore: visitorScore,
         IsKeyBet: isKeyBet,
+        Clasified: clasified,
       },
     },
   ];
