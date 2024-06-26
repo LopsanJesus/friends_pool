@@ -38,7 +38,8 @@ const MatchCard = ({ match, bets, openAtFirst }: IProps) => {
       <div className="MatchCard__content">
         <div className="info">
           <div className="group">
-            {t("matches.group", { group: match.group })}
+            {match.group !== "undefined" &&
+              t("matches.group", { group: match.group })}
           </div>
           {match.isLive && match.liveMinute !== "undefined" && (
             <div className="minute">{match.liveMinute}'</div>

@@ -35,7 +35,7 @@ const PredictionsForm = ({
     visitorScore: "0",
   });
   const [keyBetInput, setKeyBetInput] = useState<boolean>(false);
-  const [showOverlay, setShowOverlay] = useState<boolean>(true);
+  const [showOverlay, setShowOverlay] = useState<boolean>(false);
 
   const { t } = useTranslation();
   const { userId } = useUser();
@@ -97,6 +97,8 @@ const PredictionsForm = ({
   if (loading) {
     return <Loader />;
   }
+
+  console.log(match);
 
   return (
     <div className="PredictionsForm">

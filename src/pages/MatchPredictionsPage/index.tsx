@@ -20,6 +20,7 @@ import { BetType, MatchType } from "types/types";
 import CheckIcon from "assets/check.svg";
 
 import { maximumGroupPhaseKeyBets } from "config/constants";
+import flags from "config/flags";
 
 const MatchPredictions = () => {
   const [nextMatchToBet, setNextMatchToBet] = useState<MatchType>();
@@ -86,7 +87,8 @@ const MatchPredictions = () => {
       {dataLoading ? (
         <Loader />
       ) : (
-        nextMatchToBet && (
+        nextMatchToBet &&
+        flags.betsWindowOpen && (
           <>
             <div>
               <p>
@@ -100,7 +102,10 @@ const MatchPredictions = () => {
             </div>
 
             <div className="Predictions__info">
-              <div>{t("matches.group", { group: nextMatchToBet.group })}</div>
+              <div>
+                {nextMatchToBet.group !== "undefined" &&
+                  t("matches.group", { group: nextMatchToBet.group })}
+              </div>
               <div>{nextMatchToBet.datetime}</div>
             </div>
 
@@ -122,6 +127,13 @@ const MatchPredictions = () => {
         <div className="Predictions__empty">
           <Icon alt="checkmark" src={CheckIcon} color="green" />
           <h3>{t("predictions.allMatchesDone")}</h3>
+        </div>
+      )}
+
+      {!dataLoading && !flags.betsWindowOpen && (
+        <div className="Predictions__overlay">
+          Plazo de apuestas: 27 de junio a las 14:00 hasta el 29 de junio a la
+          13:00
         </div>
       )}
 
