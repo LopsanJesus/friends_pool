@@ -31,9 +31,13 @@ const MatchCardBets = ({ bets }: { bets: BetType[] }) => {
           >
             <div className="user">{bet.userName}</div>
             <div className="result">
-              <div>{bet.localScore}</div>
+              <div className={bet.clasified === "1" ? "clasified" : ""}>
+                {bet.localScore}
+              </div>
               <div>-</div>
-              <div>{bet.visitorScore}</div>
+              <div className={bet.clasified === "2" ? "clasified" : ""}>
+                {bet.visitorScore}
+              </div>
               <div className="key-bet">{bet.isKeyBet && "★"}</div>
             </div>
             <div className="points">{user?.totalPoints}</div>
