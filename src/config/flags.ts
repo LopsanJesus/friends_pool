@@ -1,5 +1,5 @@
 const flags = {
-  showMatchCardBets: isWithinRange(),
+  showMatchCardBets: !isWithinRange(),
   showParticipantFinalBets: true,
   betsWindowOpen: isWithinRange(),
   autoScrapping: process.env.REACT_APP_AUTO_SCRAPPING === "true",
@@ -12,7 +12,7 @@ function isWithinRange() {
   const now = new Date();
 
   // Fecha y hora de inicio: 27 de junio a las 14:00
-  const startDate = new Date(now.getFullYear(), 5, 27, 14, 0, 0); // Junio es el mes 5 (0-indexed)
+  const startDate = new Date(now.getFullYear(), 5, 27, 12, 0, 0); // Junio es el mes 5 (0-indexed)
 
   // Fecha y hora de fin: 29 de junio a la 13:00
   const endDate = new Date(now.getFullYear(), 5, 29, 13, 0, 0);
