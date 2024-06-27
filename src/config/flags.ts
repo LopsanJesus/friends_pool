@@ -1,5 +1,5 @@
 const flags = {
-  showMatchCardBets: !isWithinRange(),
+  showMatchCardBets: isWithinRange(),
   showParticipantFinalBets: true,
   betsWindowOpen: isWithinRange(),
   autoScrapping: process.env.REACT_APP_AUTO_SCRAPPING === "true",
