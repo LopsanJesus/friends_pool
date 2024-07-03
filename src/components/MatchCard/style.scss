@@ -37,7 +37,8 @@
     margin-bottom: 10px;
     font-size: 2em;
 
-    .home.clasified {
+    .home.clasified,
+    .visitor.clasified {
       border: 2px solid $primary-color;
       border-radius: 10px;
       padding: 5px;
