@@ -132,8 +132,7 @@ const MatchPredictions = () => {
 
       {!dataLoading && !flags.betsWindowOpen && (
         <div className="Predictions__overlay">
-          Plazo de apuestas: 27 de junio a las 14:00 hasta el 29 de junio a la
-          13:00
+          Aún no es el plazo de apuestas
         </div>
       )}
 
