@@ -43,7 +43,11 @@ const useOrderMatches = () => {
         }
       });
 
-      return [...liveMatches, ...futureMatches, ...pastMatches];
+      return [
+        ...liveMatches,
+        ...futureMatches,
+        ...pastMatches.slice().reverse(),
+      ];
     },
     [parseCustomDateTime, today]
   );
