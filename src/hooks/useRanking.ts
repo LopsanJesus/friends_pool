@@ -29,7 +29,6 @@ const useRanking = () => {
       const { points, exactMatches, keyPoints } = calculatePoints(bet);
 
       if (userPoints[bet.userId]) {
-        userPoints[bet.userId].totalPoints += points;
         userPoints[bet.userId].exactMatches += exactMatches;
         userPoints[bet.userId].keyPoints += keyPoints;
       } else {
@@ -42,6 +41,34 @@ const useRanking = () => {
         };
       }
     });
+
+    function addPoints(
+      data: any,
+      updates: { userName: string; points: number }[]
+    ) {
+      // Loop through each update
+      updates.forEach((update) => {
+        // Find the user by userName
+        for (let key in data) {
+          if (data[key].userName === update.userName) {
+            // Add the points
+            data[key].totalPoints += update.points;
+            break;
+          }
+        }
+      });
+    }
+
+    let updates = [
+      { userName: "Jesús", points: 15 },
+      { userName: "Juandi", points: 15 },
+      { userName: "Pablo", points: 15 },
+      { userName: "Gonza", points: 10 },
+      { userName: "Luis", points: 10 },
+      { userName: "Venegas", points: 15 },
+    ];
+
+    addPoints(userPoints, updates);
 
     return Object.values(userPoints).sort((a, b) => {
       if (b.totalPoints !== a.totalPoints) {
