@@ -30,6 +30,7 @@ const Ranking = () => {
                 <div className="user">{user.userName}</div>
                 <div className="exact-matches">3️⃣ {user.exactMatches}</div>
                 <div className="key-points">★ {user.keyPoints}</div>
+                <div className="final-bet-points">🏆 {user.finalBetPoints}</div>
                 <div className="points">{user.totalPoints}</div>
               </div>
             ))}

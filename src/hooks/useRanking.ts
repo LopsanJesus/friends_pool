@@ -10,6 +10,7 @@ type UserRanking = {
   totalPoints: number;
   exactMatches: number;
   keyPoints: number;
+  finalBetPoints: number;
 };
 
 const useRanking = () => {
@@ -39,11 +40,23 @@ const useRanking = () => {
           totalPoints: points,
           exactMatches,
           keyPoints,
+          finalBetPoints: 0,
         };
       }
     });
 
-    return Object.values(userPoints).sort((a, b) => {
+    let updates = [
+      { userName: "Pablo", points: 10 },
+      { userName: "Juandi", points: 10 },
+      { userName: "Venegas", points: 5 },
+      { userName: "Jesús", points: 5 },
+      { userName: "Luis", points: 5 },
+      { userName: "Gonza", points: 5 },
+    ];
+
+    let newData = addPoints(userPoints, updates);
+
+    return Object.values(newData).sort((a, b) => {
       if (b.totalPoints !== a.totalPoints) {
         return b.totalPoints - a.totalPoints;
       }
@@ -62,3 +75,29 @@ const useRanking = () => {
 };
 
 export default useRanking;
+
+function addPoints(
+  data: any,
+  updates: { userName: string; points: number }[]
+): UserRanking[] {
+  // Create a copy of the data object
+  let newData = { ...data };
+
+  // Loop through each update
+  updates.forEach((update) => {
+    // Find the user by userName
+    for (let key in newData) {
+      if (newData[key].userName === update.userName) {
+        // Create a copy of the user object and add the points
+        newData[key] = {
+          ...newData[key],
+          totalPoints: newData[key].totalPoints + update.points,
+          finalBetPoints: update.points,
+        };
+        break;
+      }
+    }
+  });
+
+  return newData;
+}
