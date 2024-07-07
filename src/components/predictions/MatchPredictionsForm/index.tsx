@@ -100,8 +100,6 @@ const PredictionsForm = ({
     return <Loader />;
   }
 
-  console.log(match);
-
   return (
     <div className="PredictionsForm">
       <div className="PredictionsForm__content">
