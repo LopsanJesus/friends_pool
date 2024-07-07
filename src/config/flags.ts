@@ -15,7 +15,7 @@ function isWithinRange() {
   const startDate = new Date(now.getFullYear(), 6, 3, 12, 0, 0); // Junio es el mes 5 (0-indexed)
 
   // Fecha y hora de fin: 29 de junio a la 13:00
-  const endDate = new Date(now.getFullYear(), 6, 4, 23, 59, 0);
+  const endDate = new Date(now.getFullYear(), 6, 9, 20, 0, 0);
 
   // Comprueba si la fecha y hora actual está dentro del rango
   return now >= startDate && now <= endDate;
