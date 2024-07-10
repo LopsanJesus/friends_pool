@@ -48,9 +48,9 @@ const useRanking = () => {
     let updates = [
       { userName: "Pablo", points: 20 },
       { userName: "Juandi", points: 10 },
-      { userName: "Venegas", points: 5 },
+      { userName: "Venegas", points: 15 },
       { userName: "Jesús", points: 5 },
-      { userName: "Luis", points: 5 },
+      { userName: "Luis", points: 15 },
       { userName: "Gonza", points: 5 },
     ];
 
