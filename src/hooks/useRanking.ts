@@ -49,7 +49,7 @@ const useRanking = () => {
       { userName: "Pablo", points: 20 },
       { userName: "Juandi", points: 10 },
       { userName: "Venegas", points: 15 },
-      { userName: "Jesús", points: 5 },
+      { userName: "Jesús", points: 20 },
       { userName: "Luis", points: 15 },
       { userName: "Gonza", points: 5 },
     ];
